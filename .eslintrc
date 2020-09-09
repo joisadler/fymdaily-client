@@ -1,8 +1,11 @@
 {
+  "parser": "@babel/eslint-parser",
   "extends": ["airbnb", "airbnb/hooks"],
+  "plugins": ["react", "react-hooks"],
   "env": {
     "browser": true,
-    "node": true
+    "commonjs": true,
+    "es6": true
   },
   "rules": {
     "no-console": 0,
