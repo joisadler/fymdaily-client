@@ -2,48 +2,48 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import {
-  loadUsers,
-  removeUser,
+  // loadUsers,
+  // removeUser,
   login,
   logout,
-  signup
+  signup,
 } from '../actions/UserActions';
 
-class Test extends Component {
+class Login extends Component {
   state = {
     msg: '',
     loginCred: {
       email: '',
-      password: ''
+      password: '',
     },
     signupCred: {
       email: '',
       password: '',
-      username: ''
-    }
+      username: '',
+    },
   };
 
-  loginHandleChange = ev => {
+  loginHandleChange = (ev) => {
     const { name, value } = ev.target;
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       loginCred: {
         ...prevState.loginCred,
-        [name]: value
-      }
+        [name]: value,
+      },
     }));
   };
 
-  signupHandleChange = ev => {
+  signupHandleChange = (ev) => {
     const { name, value } = ev.target;
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       signupCred: {
         ...prevState.signupCred,
-        [name]: value
-      }
+        [name]: value,
+      },
     }));
   };
 
-  doLogin = async ev => {
+  doLogin = async (ev) => {
     ev.preventDefault();
     const { email, password } = this.state.loginCred;
     if (!email || !password) {
@@ -54,7 +54,7 @@ class Test extends Component {
     this.setState({ loginCred: { email: '', password: '' } });
   };
 
-  doSignup = async ev => {
+  doSignup = async (ev) => {
     ev.preventDefault();
     const { email, password, username } = this.state.signupCred;
     if (!email || !password || !username) {
@@ -65,11 +65,12 @@ class Test extends Component {
     this.setState({ signupCred: { email: '', password: '', username: '' } });
   };
 
-  removeUser = userId => {
+  removeUser = (userId) => {
     this.props.removeUser(userId);
   };
+
   render() {
-    let signupSection = (
+    const signupSection = (
       <form onSubmit={this.doSignup}>
         <input
           type="text"
@@ -98,7 +99,7 @@ class Test extends Component {
         <button>Signup</button>
       </form>
     );
-    let loginSection = (
+    const loginSection = (
       <form onSubmit={this.doLogin}>
         <input
           type="text"
@@ -129,7 +130,10 @@ class Test extends Component {
         <h2>{this.state.msg}</h2>
         {loggedInUser && (
           <div>
-            <h2>Welcome: {loggedInUser.username} </h2>
+            <h2>
+              Welcome:
+              {loggedInUser.username}
+            </h2>
             <button onClick={this.props.logout}>Logout</button>
           </div>
         )}
@@ -144,9 +148,10 @@ class Test extends Component {
         <hr />
         <button onClick={this.props.loadUsers}>Get All Users</button>
         {this.props.isLoading && 'Loading...' }
-        {this.props.users && <ul>
+        {this.props.users && (
+        <ul>
 
-          {this.props.users.map(user => (
+          {this.props.users.map((user) => (
             <li key={user._id}>
               <pre>{JSON.stringify(user, null, 2)}</pre>
               <button
@@ -154,29 +159,30 @@ class Test extends Component {
                   this.removeUser(user._id);
                 }}
               >
-                Remove {user.username}
+                Remove
+                {' '}
+                {user.username}
               </button>
             </li>
           ))}
-        </ul>}
+        </ul>
+        )}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    users: state.user.users,
-    loggedInUser: state.user.loggedInUser,
-    isLoading: state.system.isLoading
-  };
-};
+const mapStateToProps = (state) => ({
+  users: state.user.users,
+  loggedInUser: state.user.loggedInUser,
+  isLoading: state.system.isLoading,
+});
 const mapDispatchToProps = {
   login,
   logout,
   signup,
   removeUser,
-  loadUsers
+  loadUsers,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Test);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

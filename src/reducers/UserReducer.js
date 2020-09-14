@@ -3,7 +3,7 @@ if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user);
 
 const initialState = {
   loggedInUser: localLoggedinUser,
-  users: [],
+  // users: [],
 };
 
 export default function (state = initialState, action = {}) {
@@ -15,8 +15,8 @@ export default function (state = initialState, action = {}) {
         ...state,
         users: state.users.filter((user) => user._id !== action.userId),
       };
-    case 'SET_USERS':
-      return { ...state, users: action.users };
+    // case 'SET_USERS':
+    //   return { ...state, users: action.users };
     default:
       return state;
   }
