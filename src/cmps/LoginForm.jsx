@@ -7,6 +7,7 @@ const LoginForm = ({ setCurrentForm }) => {
   const [usernameOrEmail, setUsernameOrEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [isRememberMeChecked, setIsRememberMeChecked] = useState(false);
 
   const doLogin = useAuth(login);
 
@@ -16,9 +17,13 @@ const LoginForm = ({ setCurrentForm }) => {
       return setMessage('Please enter username/password');
     }
     const userCreds = { usernameOrEmail, password };
-    doLogin(userCreds);
+    doLogin(userCreds, isRememberMeChecked);
     setUsernameOrEmail('');
     setPassword('');
+  };
+
+  const handleRememberMeChange = () => {
+    setIsRememberMeChecked(!isRememberMeChecked);
   };
 
   return (
@@ -40,6 +45,16 @@ const LoginForm = ({ setCurrentForm }) => {
           value={password}
           onChange={(e) => { setPassword(e.target.value); setMessage(''); }}
           placeholder="Password"
+        />
+        <br />
+        <label htmlFor="remember-me">
+          Remember me
+        </label>
+        <input
+          type="checkbox"
+          id="remember-me"
+          defaultChecked={isRememberMeChecked}
+          onChange={handleRememberMeChange}
         />
         <br />
         <button type="submit">Login</button>

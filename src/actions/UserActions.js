@@ -38,9 +38,10 @@ export function setUser(user) {
   };
 }
 
-export function login(userCreds) {
+export function login(userCreds, isRememberMeChecked) {
   return async (dispatch) => {
-    const user = await UserService.login(userCreds);
+    console.log(isRememberMeChecked)
+    const user = await UserService.login(userCreds, isRememberMeChecked);
     if (user) dispatch(setUser(user));
   };
 }

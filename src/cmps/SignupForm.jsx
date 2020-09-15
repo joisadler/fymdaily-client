@@ -1,26 +1,36 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import useAuth from '../hooks/use-auth';
+import { login } from '../actions/UserActions';
 
-const SignupForm = (props) => {
+const LoginForm = ({ setCurrentForm }) => {
   const [usernameOrEmail, setUsernameOrEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { setCurrentForm } = props;
+  const [message, setMessage] = useState('');
 
-  const doSignup = (e) => {
+  const doLogin = useAuth(login);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Submitting Name ${usernameOrEmail},
-    Password: ${password}`);
+    if (!usernameOrEmail || !password) {
+      return setMessage('Please enter username/password');
+    }
+    const userCreds = { usernameOrEmail, password };
+    doLogin(userCreds);
+    setUsernameOrEmail('');
+    setPassword('');
   };
 
   return (
     <div className="form-container">
-      <form onSubmit={doSignup}>
-        <h2 className="form-caption">Signup:</h2>
+      <form onSubmit={handleSubmit}>
+        <h2 className="form-caption">Login:</h2>
+        <p className="message" style={{ color: 'red' }}>{message}</p>
         <input
           type="text"
           name="UsernameOrEmail"
           value={usernameOrEmail}
-          onChange={e => setUsernameOrEmail(e.target.value)}
+          onChange={(e) => { setUsernameOrEmail(e.target.value); setMessage(''); }}
           placeholder="Username or Email"
         />
         <br />
@@ -28,27 +38,27 @@ const SignupForm = (props) => {
           type="password"
           name="password"
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => { setPassword(e.target.value); setMessage(''); }}
           placeholder="Password"
         />
         <br />
-        <button type="submit">Signup</button>
+        <button type="submit">Login</button>
       </form>
       <p>
-        Already have an account?
+        Don&rsquo;t have an account?
         <button
           type="button"
-          onClick={() => { setCurrentForm('login'); }}
+          onClick={() => { setCurrentForm('signup'); }}
         >
-          Log In
+          Sign Up
         </button>
       </p>
     </div>
   );
 };
 
-SignupForm.propTypes = {
+LoginForm.propTypes = {
   setCurrentForm: PropTypes.func.isRequired,
 };
 
-export default SignupForm;
+export default LoginForm;

@@ -21,11 +21,14 @@ function _handleLogin(user) {
   return user;
 }
 
-async function login(userCred) {
+async function login(userCred, isRememberMeChecked) {
   const res = await HttpService.post('auth/login', userCred);
   if (res.user) {
     console.log(res.message);
-    return _handleLogin(res.user);
+    if (isRememberMeChecked) {
+      return _handleLogin(res.user);
+    }
+    return res.user;
   }
   console.log(res.message);
 }
