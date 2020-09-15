@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import useAuth from '../hooks/use-auth';
 import { login } from '../actions/UserActions';
 
 const LoginForm = ({ setCurrentForm }) => {
@@ -8,13 +8,7 @@ const LoginForm = ({ setCurrentForm }) => {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
-  const useLogin = () => {
-    const dispatch = useDispatch();
-    return (userCreds) => {
-      dispatch(login(userCreds));
-    };
-  };
-  const doLogin = useLogin();
+  const doLogin = useAuth(login);
 
   const handleSubmit = (e) => {
     e.preventDefault();
