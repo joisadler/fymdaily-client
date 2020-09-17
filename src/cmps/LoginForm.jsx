@@ -27,15 +27,16 @@ const LoginForm = ({ setCurrentForm }) => {
   };
 
   return (
-    <div className="form-container">
-      <form onSubmit={handleSubmit}>
-        <h2 className="form-caption">Login:</h2>
-        <p className="message" style={{ color: 'red' }}>{message}</p>
+    <form className="login-form" onSubmit={handleSubmit}>
+      <p className="message" style={{ color: 'red' }}>{message}</p>
+      <fieldset className="credentials">
         <input
           type="text"
           name="UsernameOrEmail"
           value={usernameOrEmail}
-          onChange={(e) => { setUsernameOrEmail(e.target.value); setMessage(''); }}
+          onChange={(e) => {
+            setUsernameOrEmail(e.target.value); setMessage('');
+          }}
           placeholder="Username or Email"
         />
         <br />
@@ -43,32 +44,41 @@ const LoginForm = ({ setCurrentForm }) => {
           type="password"
           name="password"
           value={password}
-          onChange={(e) => { setPassword(e.target.value); setMessage(''); }}
+          onChange={(e) => {
+            setPassword(e.target.value); setMessage('');
+          }}
           placeholder="Password"
         />
-        <br />
-        <label htmlFor="remember-me">
-          Remember me
-        </label>
-        <input
-          type="checkbox"
-          id="remember-me"
-          defaultChecked={isRememberMeChecked}
-          onChange={handleRememberMeChange}
-        />
-        <br />
-        <button type="submit">Login</button>
-      </form>
-      <p>
-        Don&rsquo;t have an account?
-        <button
-          type="button"
-          onClick={() => { setCurrentForm('signup'); }}
-        >
-          Sign Up
-        </button>
-      </p>
-    </div>
+      </fieldset>
+      <section className="form-options-section">
+        <section className="form-submit-section">
+          <section className="remember-me-section">
+            <input
+              type="checkbox"
+              id="remember-me"
+              defaultChecked={isRememberMeChecked}
+              onChange={handleRememberMeChange}
+            />
+            <label htmlFor="remember-me">
+              Remember Me
+            </label>
+          </section>
+          <br />
+          <button type="submit" className="login-button">Log In</button>
+        </section>
+        <section className="other-option-section">
+          Don&rsquo;t have an account?
+          <br />
+          <button
+            className="signup-option"
+            type="button"
+            onClick={() => { setCurrentForm('signup'); }}
+          >
+            Sign Up
+          </button>
+        </section>
+      </section>
+    </form>
   );
 };
 

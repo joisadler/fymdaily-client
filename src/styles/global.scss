@@ -1,3 +1,5 @@
+// Reset CSS
+@import "setup/reset";
 // Setup
 @import "setup/variables";
 @import "setup/functions";
@@ -13,7 +15,10 @@
 
 // Pages
 @import "pages/HomePage";
+@import "pages/EntryPage";
 
 // Components
 @import "components/Navbar";
 @import "components/Footer";
+@import "components/LoginForm";
+@import "components/SignupForm";

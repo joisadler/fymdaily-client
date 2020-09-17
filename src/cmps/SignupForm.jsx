@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import useAuth from '../hooks/use-auth';
-import { login } from '../actions/UserActions';
+import { signup } from '../actions/UserActions';
 
-const LoginForm = ({ setCurrentForm }) => {
+const SignupForm = ({ setCurrentForm }) => {
   const [usernameOrEmail, setUsernameOrEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [isRememberMeChecked, setIsRememberMeChecked] = useState(false);
 
-  const doLogin = useAuth(login);
+  const doSignup = useAuth(signup);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,21 +17,26 @@ const LoginForm = ({ setCurrentForm }) => {
       return setMessage('Please enter username/password');
     }
     const userCreds = { usernameOrEmail, password };
-    doLogin(userCreds);
+    doSignup(userCreds, isRememberMeChecked);
     setUsernameOrEmail('');
     setPassword('');
   };
 
+  const handleRememberMeChange = () => {
+    setIsRememberMeChecked(!isRememberMeChecked);
+  };
+
   return (
-    <div className="form-container">
-      <form onSubmit={handleSubmit}>
-        <h2 className="form-caption">Login:</h2>
-        <p className="message" style={{ color: 'red' }}>{message}</p>
+    <form className="signup-form" onSubmit={handleSubmit}>
+      <p className="message" style={{ color: 'red' }}>{message}</p>
+      <fieldset className="credentials">
         <input
           type="text"
           name="UsernameOrEmail"
           value={usernameOrEmail}
-          onChange={(e) => { setUsernameOrEmail(e.target.value); setMessage(''); }}
+          onChange={(e) => {
+            setUsernameOrEmail(e.target.value); setMessage('');
+          }}
           placeholder="Username or Email"
         />
         <br />
@@ -38,27 +44,46 @@ const LoginForm = ({ setCurrentForm }) => {
           type="password"
           name="password"
           value={password}
-          onChange={(e) => { setPassword(e.target.value); setMessage(''); }}
+          onChange={(e) => {
+            setPassword(e.target.value); setMessage('');
+          }}
           placeholder="Password"
         />
-        <br />
-        <button type="submit">Login</button>
-      </form>
-      <p>
-        Don&rsquo;t have an account?
-        <button
-          type="button"
-          onClick={() => { setCurrentForm('signup'); }}
-        >
-          Sign Up
-        </button>
-      </p>
-    </div>
+      </fieldset>
+      <section className="form-options-section">
+        <section className="form-submit-section">
+          <section className="remember-me-section">
+            <input
+              type="checkbox"
+              id="remember-me"
+              defaultChecked={isRememberMeChecked}
+              onChange={handleRememberMeChange}
+            />
+            <label htmlFor="remember-me">
+              Remember Me
+            </label>
+          </section>
+          <br />
+          <button type="submit" className="signup-button">Sign Up</button>
+        </section>
+        <section className="other-option-section">
+          Already have an account?
+          <br />
+          <button
+            className="login-option"
+            type="button"
+            onClick={() => { setCurrentForm('login'); }}
+          >
+            Log In
+          </button>
+        </section>
+      </section>
+    </form>
   );
 };
 
-LoginForm.propTypes = {
+SignupForm.propTypes = {
   setCurrentForm: PropTypes.func.isRequired,
 };
 
-export default LoginForm;
+export default SignupForm;
