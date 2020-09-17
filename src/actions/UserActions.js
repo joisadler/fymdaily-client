@@ -1,35 +1,8 @@
 import UserService from '../services/UserService';
-// import { loading, doneLoading } from './SystemActions';
-// import history from './../history';
+import history from '../history';
+import MessageActions from './MessageActions';
 
-// // THUNK
-// export function loadUsers() {
-//   return async (dispatch) => {
-//     try {
-//       // example for loading
-//       dispatch(loading());
-//       const users = await UserService.getUsers();
-//       dispatch(setUsers(users));
-//     } catch (err) {
-//       console.log('UserActions: err in loadUsers', err);
-//       // example for rerouting - after changing the store
-//       // history.push('/some/path');
-//     } finally {
-//       dispatch(doneLoading());
-//     }
-//   };
-// }
-// // THUNK
-// export function removeUser(userId) {
-//   return async (dispatch) => {
-//     try {
-//       await UserService.remove(userId);
-//       dispatch(_removeUser(userId));
-//     } catch (err) {
-//       console.log('UserActions: err in removeUser', err);
-//     }
-//   };
-// }
+const { setMessage } = MessageActions;
 
 export function setUser(user) {
   return {
@@ -40,16 +13,28 @@ export function setUser(user) {
 
 export function login(userCreds, isRememberMeChecked) {
   return async (dispatch) => {
-    console.log(isRememberMeChecked)
-    const user = await UserService.login(userCreds, isRememberMeChecked);
-    if (user) dispatch(setUser(user));
+    const res = await UserService.login(userCreds, isRememberMeChecked);
+    const { user, message } = res;
+    if (!user) dispatch(setMessage(message));
+    else {
+      // console.log(user)
+      dispatch(setUser(user));
+      dispatch(setMessage(''));
+      history.push('/home');
+    }
   };
 }
 
-export function signup(userCreds) {
+export function signup(userCreds, isRememberMeChecked) {
   return async (dispatch) => {
-    const user = await UserService.signup(userCreds);
-    dispatch(setUser(user));
+    const res = await UserService.signup(userCreds, isRememberMeChecked);
+    const { user, message } = res;
+    if (!user) dispatch(setMessage(message));
+    else {
+      dispatch(setUser(user));
+      dispatch(setMessage(''));
+      history.push('/user-settings');
+    }
   };
 }
 
@@ -59,17 +44,3 @@ export function logout() {
     dispatch(setUser(null));
   };
 }
-
-// function setUsers(users) {
-//   return {
-//     type: 'SET_USERS',
-//     users,
-//   };
-// }
-
-// function _removeUser(userId) {
-//   return {
-//     type: 'USER_REMOVE',
-//     userId,
-//   };
-// }

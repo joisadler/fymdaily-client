@@ -1,25 +1,41 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import useAuth from '../hooks/use-auth';
 import { signup } from '../actions/UserActions';
+import MessageActions from '../actions/MessageActions';
 
 const SignupForm = ({ setCurrentForm }) => {
-  const [usernameOrEmail, setUsernameOrEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [isRememberMeChecked, setIsRememberMeChecked] = useState(false);
+  const message = useSelector(state => state.message.message);
+  const dispatch = useDispatch();
+  const setMessage = msg => dispatch(MessageActions.setMessage(msg));
 
   const doSignup = useAuth(signup);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!usernameOrEmail || !password) {
-      return setMessage('Please enter username/password');
+    if (!username || !email || !password || !confirmPassword) {
+      return setMessage('All fields are required!');
     }
-    const userCreds = { usernameOrEmail, password };
+    if (password !== confirmPassword) {
+      return setMessage('Your password and confirmation password do not match!');
+    }
+    const userCreds = {
+      username,
+      email,
+      password,
+      confirmPassword,
+    };
     doSignup(userCreds, isRememberMeChecked);
-    setUsernameOrEmail('');
+    setUsername('');
+    setEmail('');
     setPassword('');
+    setConfirmPassword('');
   };
 
   const handleRememberMeChange = () => {
@@ -28,26 +44,39 @@ const SignupForm = ({ setCurrentForm }) => {
 
   return (
     <form className="signup-form" onSubmit={handleSubmit}>
-      <p className="message" style={{ color: 'red' }}>{message}</p>
+      <p className="signup-message" style={{ color: 'red' }}>{message}</p>
       <fieldset className="credentials">
         <input
           type="text"
-          name="UsernameOrEmail"
-          value={usernameOrEmail}
-          onChange={(e) => {
-            setUsernameOrEmail(e.target.value); setMessage('');
-          }}
-          placeholder="Username or Email"
+          name="username"
+          value={username}
+          onChange={e => setUsername(e.target.value)}
+          onFocus={() => setMessage('')}
+          placeholder="Username"
         />
-        <br />
+        <input
+          type="email"
+          name="email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          onFocus={() => setMessage('')}
+          placeholder="Email"
+        />
         <input
           type="password"
           name="password"
           value={password}
-          onChange={(e) => {
-            setPassword(e.target.value); setMessage('');
-          }}
+          onChange={e => setPassword(e.target.value)}
+          onFocus={() => setMessage('')}
           placeholder="Password"
+        />
+        <input
+          type="password"
+          name="confirmPassword"
+          value={confirmPassword}
+          onChange={e => setConfirmPassword(e.target.value)}
+          onFocus={() => setMessage('')}
+          placeholder="Confirm Password"
         />
       </fieldset>
       <section className="form-options-section">
@@ -72,7 +101,7 @@ const SignupForm = ({ setCurrentForm }) => {
           <button
             className="login-option"
             type="button"
-            onClick={() => { setCurrentForm('login'); }}
+            onClick={() => { setCurrentForm('login'); setMessage(''); }}
           >
             Log In
           </button>

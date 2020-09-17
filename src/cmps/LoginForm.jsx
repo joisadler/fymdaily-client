@@ -1,20 +1,23 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import useAuth from '../hooks/use-auth';
 import { login } from '../actions/UserActions';
+import MessageActions from '../actions/MessageActions';
 
 const LoginForm = ({ setCurrentForm }) => {
   const [usernameOrEmail, setUsernameOrEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
   const [isRememberMeChecked, setIsRememberMeChecked] = useState(false);
-
+  const message = useSelector(state => state.message.message);
+  const dispatch = useDispatch();
+  const setMessage = msg => dispatch(MessageActions.setMessage(msg));
   const doLogin = useAuth(login);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!usernameOrEmail || !password) {
-      return setMessage('Please enter username/password');
+      return setMessage('Please enter username/password!');
     }
     const userCreds = { usernameOrEmail, password };
     doLogin(userCreds, isRememberMeChecked);
@@ -28,15 +31,14 @@ const LoginForm = ({ setCurrentForm }) => {
 
   return (
     <form className="login-form" onSubmit={handleSubmit}>
-      <p className="message" style={{ color: 'red' }}>{message}</p>
+      <p className="login-message" style={{ color: 'red' }}>{message}</p>
       <fieldset className="credentials">
         <input
           type="text"
-          name="UsernameOrEmail"
+          name="usernameOrEmail"
           value={usernameOrEmail}
-          onChange={(e) => {
-            setUsernameOrEmail(e.target.value); setMessage('');
-          }}
+          onChange={e => setUsernameOrEmail(e.target.value)}
+          onFocus={() => setMessage('')}
           placeholder="Username or Email"
         />
         <br />
@@ -44,9 +46,8 @@ const LoginForm = ({ setCurrentForm }) => {
           type="password"
           name="password"
           value={password}
-          onChange={(e) => {
-            setPassword(e.target.value); setMessage('');
-          }}
+          onChange={e => setPassword(e.target.value)}
+          onFocus={() => setMessage('')}
           placeholder="Password"
         />
       </fieldset>
@@ -72,7 +73,7 @@ const LoginForm = ({ setCurrentForm }) => {
           <button
             className="signup-option"
             type="button"
-            onClick={() => { setCurrentForm('signup'); }}
+            onClick={() => { setCurrentForm('signup'); setMessage(''); }}
           >
             Sign Up
           </button>

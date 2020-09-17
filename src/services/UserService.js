@@ -24,18 +24,23 @@ function _handleLogin(user) {
 async function login(userCred, isRememberMeChecked) {
   const res = await HttpService.post('auth/login', userCred);
   if (res.user) {
-    console.log(res.message);
     if (isRememberMeChecked) {
       return _handleLogin(res.user);
     }
-    return res.user;
+    return res;
   }
-  console.log(res.message);
+  return res;
 }
 
-async function signup(userCred) {
-  const user = await HttpService.post('auth/signup', userCred);
-  return _handleLogin(user);
+async function signup(userCred, isRememberMeChecked) {
+  const res = await HttpService.post('auth/signup', userCred);
+  if (res.user) {
+    if (isRememberMeChecked) {
+      return _handleLogin(res.user);
+    }
+    return res;
+  }
+  return res;
 }
 
 async function logout() {

@@ -1,11 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
-export class HomePage extends Component {
-  render() {
-    return (
-      <section className="homepage">
-        <h1>React + Redux + Sass Project</h1>
-      </section>
-    );
-  }
-}
+const HomePage = () => {
+  const user = useSelector(state => state.user.loggedInUser);
+  return (
+    <section className="homepage">
+      <pre>
+        {JSON.stringify(user)}
+      </pre>
+    </section>
+  );
+};
+
+export default HomePage;

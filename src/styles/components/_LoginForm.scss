@@ -41,6 +41,17 @@
   }
 }
 
+.login-message {
+  margin-block-end: 1rem;
+  color: red;
+  font-size: 1rem;
+
+  @media (min-width: $tablet) and (max-width: $desktop) {
+    margin-block-end: 2rem;
+    font-size: 2rem;
+  }
+}
+
 .form-options-section {
   display: flex;
   flex-flow: row nowrap;
