@@ -17,7 +17,7 @@ export function login(userCreds, isRememberMeChecked) {
     const { user, message } = res;
     if (!user) dispatch(setMessage(message));
     else {
-      // console.log(user)
+      console.log(user)
       dispatch(setUser(user));
       dispatch(setMessage(''));
       history.push('/home');
@@ -31,9 +31,10 @@ export function signup(userCreds, isRememberMeChecked) {
     const { user, message } = res;
     if (!user) dispatch(setMessage(message));
     else {
+      console.log(user)
       dispatch(setUser(user));
       dispatch(setMessage(''));
-      history.push('/user-settings');
+      // history.push('/user-settings');
     }
   };
 }
