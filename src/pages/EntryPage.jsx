@@ -8,7 +8,7 @@ export default () => {
 
   return (
     <div className="page">
-      <main className="entry-page-main">
+      <main className="entry-page">
         <h1 className="app-description">
           <em>FYMdaily</em>
           &nbsp;– simple and minimalistic calorie/macronutrient tracker. Sign up today and start Fit Your Macros daily!

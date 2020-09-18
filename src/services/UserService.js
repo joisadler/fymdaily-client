@@ -16,16 +16,16 @@ function update(user) {
   return HttpService.put(`user/${user._id}`, user);
 }
 
-function _handleLogin(user) {
-  sessionStorage.setItem('user', JSON.stringify(user));
-  return user;
+function _handleLogin(res) {
+  sessionStorage.setItem('user', JSON.stringify(res.user));
+  return res;
 }
 
 async function login(userCred, isRememberMeChecked) {
   const res = await HttpService.post('auth/login', userCred);
   if (res.user) {
     if (isRememberMeChecked) {
-      return _handleLogin(res.user);
+      return _handleLogin(res);
     }
     return res;
   }
@@ -36,7 +36,7 @@ async function signup(userCred, isRememberMeChecked) {
   const res = await HttpService.post('auth/signup', userCred);
   if (res.user) {
     if (isRememberMeChecked) {
-      return _handleLogin(res.user);
+      return _handleLogin(res);
     }
     return res;
   }

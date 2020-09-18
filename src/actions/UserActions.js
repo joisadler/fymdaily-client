@@ -34,7 +34,7 @@ export function signup(userCreds, isRememberMeChecked) {
       console.log(user)
       dispatch(setUser(user));
       dispatch(setMessage(''));
-      // history.push('/user-settings');
+      history.push('/user-settings');
     }
   };
 }
