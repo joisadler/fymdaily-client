@@ -1,9 +1,5 @@
 .main-navbar {
-  &-links {
-    //
-  }
-
-  &-link {
-    //
-  }
+  height: 15vh;
+  display: flex;
+  flex-flow: row nowrap;
 }

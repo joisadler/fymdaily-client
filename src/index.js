@@ -2,10 +2,31 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
+
+// Font Awesome
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import {
+  faPlusCircle,
+  faList,
+  faCog,
+  faHome,
+  faUtensils,
+} from '@fortawesome/free-solid-svg-icons';
+
 import history from './history';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Store from './store';
+
+library.add(
+  fab,
+  faPlusCircle,
+  faList,
+  faCog,
+  faHome,
+  faUtensils,
+);
 
 ReactDOM.render(
   <Provider store={Store}>
