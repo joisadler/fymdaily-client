@@ -4,6 +4,8 @@ import './styles/global.scss';
 import EntryPage from './pages/EntryPage';
 import HomePage from './pages/HomePage';
 import UserSettingsPage from './pages/UserSettingsPage';
+import EatenFoodsPage from './pages/EatenFoodsPage';
+import AddFoodPage from './pages/AddFoodPage.jsx';
 
 function App() {
   return (
@@ -11,6 +13,8 @@ function App() {
       <Switch>
         <Route exact path="/" component={EntryPage} />
         <Route path="/home" component={HomePage} />
+        <Route path="/eaten-foods" component={EatenFoodsPage} />
+        <Route path="/add-food" component={AddFoodPage} />
         <Route path="/user-settings" component={UserSettingsPage} />
         {/* <Route path="/account-settings" component={AccountSettingsPage} /> */}
         {/* <Route path="/user-preferences" component={UserPreferencesPage} /> */}

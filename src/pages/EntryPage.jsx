@@ -7,8 +7,8 @@ export default () => {
   const [currentForm, setCurrentForm] = useState('login');
 
   return (
-    <div className="page">
-      <main className="entry-page">
+    <>
+      <main className="page">
         <h1 className="app-description">
           <em>FYMdaily</em>
           &nbsp;– simple and minimalistic calorie/macronutrient tracker. Sign up today and start Fit Your Macros daily!
@@ -22,6 +22,6 @@ export default () => {
         </div>
       </main>
       <Footer />
-    </div>
+    </>
   );
 };

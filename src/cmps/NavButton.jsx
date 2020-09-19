@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import history from '../history';
 import MenuActions from '../actions/SettingsMenuActions';
 
 const NavButton = ({ to, icon }) => {

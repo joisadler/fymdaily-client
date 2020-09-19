@@ -4,6 +4,7 @@ import history from '../history';
 const BASE_URL = process.env.NODE_ENV === 'production'
   ? '/api/'
   : '//localhost:4000/api/';
+  // : '//192.168.0.6:4000/api/'; // local network IP
 
 const axios = Axios.create({
   withCredentials: true,

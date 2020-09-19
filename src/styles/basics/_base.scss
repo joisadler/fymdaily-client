@@ -35,8 +35,14 @@ body,
 }
 
 .page {
+  height: calc(var(--vh, 1vh) * 85);
+  min-height: calc(var(--vh, 1vh) * 85);
+  padding: 3rem 3rem 0 3rem;
   display: flex;
   flex-flow: column nowrap;
-  width: 100%;
-  min-height: 100%;
+  align-items: center;
+
+  @media (min-width: $tablet) and (max-width: $desktop) {
+    padding: 6rem 6rem 0 6rem;
+  }
 }
