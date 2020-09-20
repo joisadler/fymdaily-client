@@ -16,25 +16,18 @@
   }
 }
 
-.calories-headline {
-  margin-block-end: 1rem;
-  font-size: 2.3vmin;
-
-  @media (min-width: $tablet) {
-    font-size: 1.5vmin;
-  }
-}
-
 .calories-number {
-  font-size: 18vmin;
+  font-size: 16vmin;
+  margin-block-start: 1rem;
+  margin-block-end: 1rem;
 
   @media (min-width: $tablet) {
-    font-size: 12vmin;
+    font-size: 10vmin;
   }
 }
 
+.calories-headline,
 .calories-subheadline {
-  margin-block-start: 1rem;
   font-size: 1.9vmin;
 
   @media (min-width: $tablet) {
@@ -42,8 +35,8 @@
   }
 }
 
-.alternative-calories-chart-content-headline {
-  margin-block-end: 2rem;
+.alternative-calories-chart-content-headline,
+.alternative-calories-chart-content-percent {
   font-size: 4vmin;
 
   @media (min-width: $tablet) {
@@ -52,18 +45,11 @@
 }
 
 .alternative-calories-chart-content-number {
+  margin-block-start: 2rem;
+  margin-block-end: 2rem;
   font-size: 9vmin;
 
   @media (min-width: $tablet) {
     font-size: 5vmin;
-  }
-}
-
-.alternative-calories-chart-content-percent {
-  margin-block-start: 2rem;
-  font-size: 4vmin;
-
-  @media (min-width: $tablet) {
-    font-size: 2.5vmin;
   }
 }
