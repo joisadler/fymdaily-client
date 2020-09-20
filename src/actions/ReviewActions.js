@@ -1,11 +1,24 @@
-import ReviewService from '../services/ReviewService';
+import reviewService from '../services/review.service';
+
+function setReviews(reviews) {
+  return {
+    type: 'SET_REVIEWS',
+    reviews,
+  };
+}
+
+function _addReview(review) {
+  return {
+    type: 'REVIEW_ADD',
+    review,
+  };
+}
 
 export function loadReviews() {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
-      const reviews = await ReviewService.query();
+      const reviews = await reviewService.query();
       dispatch(setReviews(reviews));
-
     } catch (err) {
       console.log('ReviewActions: err in loadReviews', err);
     }
@@ -13,26 +26,12 @@ export function loadReviews() {
 }
 
 export function addReview(review) {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
-      const addedReview = await ReviewService.add(review);
+      const addedReview = await reviewService.add(review);
       dispatch(_addReview(addedReview));
     } catch (err) {
       console.log('ReviewActions: err in addReview', err);
     }
-  };
-}
-
-function setReviews(reviews) {
-  return {
-    type: 'SET_REVIEWS',
-    reviews
-  };
-}
-
-function _addReview(review) {
-  return {
-    type: 'REVIEW_ADD',
-    review
   };
 }

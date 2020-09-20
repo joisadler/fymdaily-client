@@ -1,19 +1,19 @@
-import HttpService from './HttpService';
+import httpService from './http.service';
 
 function getUsers() {
-  return HttpService.get('user');
+  return httpService.get('user');
 }
 
 function getById(userId) {
-  return HttpService.get(`user/${userId}`);
+  return httpService.get(`user/${userId}`);
 }
 
 function remove(userId) {
-  return HttpService.delete(`user/${userId}`);
+  return httpService.delete(`user/${userId}`);
 }
 
 function update(user) {
-  return HttpService.put(`user/${user._id}`, user);
+  return httpService.put(`user/${user._id}`, user);
 }
 
 function _handleLogin(res) {
@@ -22,7 +22,7 @@ function _handleLogin(res) {
 }
 
 async function login(userCred, isRememberMeChecked) {
-  const res = await HttpService.post('auth/login', userCred);
+  const res = await httpService.post('auth/login', userCred);
   if (res.user) {
     if (isRememberMeChecked) {
       return _handleLogin(res);
@@ -33,7 +33,7 @@ async function login(userCred, isRememberMeChecked) {
 }
 
 async function signup(userCred, isRememberMeChecked) {
-  const res = await HttpService.post('auth/signup', userCred);
+  const res = await httpService.post('auth/signup', userCred);
   if (res.user) {
     if (isRememberMeChecked) {
       return _handleLogin(res);
@@ -44,7 +44,7 @@ async function signup(userCred, isRememberMeChecked) {
 }
 
 async function logout() {
-  await HttpService.post('auth/logout');
+  await httpService.post('auth/logout');
   sessionStorage.clear();
 }
 

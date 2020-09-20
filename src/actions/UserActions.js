@@ -1,4 +1,4 @@
-import UserService from '../services/UserService';
+import userService from '../services/user.service';
 import history from '../history';
 import MessageActions from './MessageActions';
 
@@ -13,7 +13,7 @@ export function setUser(user) {
 
 export function login(userCreds, isRememberMeChecked) {
   return async (dispatch) => {
-    const res = await UserService.login(userCreds, isRememberMeChecked);
+    const res = await userService.login(userCreds, isRememberMeChecked);
     const { user, message } = res;
     if (!user) dispatch(setMessage(message));
     else {
@@ -27,7 +27,7 @@ export function login(userCreds, isRememberMeChecked) {
 
 export function signup(userCreds, isRememberMeChecked) {
   return async (dispatch) => {
-    const res = await UserService.signup(userCreds, isRememberMeChecked);
+    const res = await userService.signup(userCreds, isRememberMeChecked);
     const { user, message } = res;
     if (!user) dispatch(setMessage(message));
     else {
@@ -41,7 +41,7 @@ export function signup(userCreds, isRememberMeChecked) {
 
 export function logout() {
   return async (dispatch) => {
-    await UserService.logout();
+    await userService.logout();
     dispatch(setUser(null));
   };
 }
