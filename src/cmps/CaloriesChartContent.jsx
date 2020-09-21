@@ -1,6 +1,31 @@
 import React, { useState } from 'react';
 
-const CaloriesChartContent = () => {
+const CaloriesChartContent = ({ numbers }) => {
+  const {
+    dailyCaloriesNeed,
+    dailyProteinsNeed,
+    dailyFatsNeed,
+    dailyCarbsNeed,
+    currentCalories,
+    currentProteins,
+    currentFats,
+    currentCarbs,
+    currentCaloriesRemainder,
+    currentPercentOfDailyCaloriesNeed,
+    currentPercentOfDailyProteinsNeed,
+    currentPercentOfDailyFatsNeed,
+    currentPercentOfDailyCarbsNeed,
+    percentageOfProteinsInDailyCaloriesNeed,
+    percentageOfFatsInDailyCaloriesNeed,
+    percentageOfCarbsInDailyCaloriesNeed,
+    percentageOfCaloriesRemainderInDailyCaloriesNeed,
+    percentageOfEmptyCaloriesInDailyCaloriesNeed,
+    percentOfProteinsInCurrentAmountOfCalories,
+    percentOfFatsInCurrentAmountOfCalories,
+    percentOfCarbsInCurrentAmountOfCalories,
+    percentOfEmptyCaloriesInCurrentAmountOfCalories,
+  } = numbers;
+
   const [isAlternateContentShown, setIsAlternateContentShown] = useState(false);
 
   const handleClick = () => {
@@ -25,7 +50,7 @@ const CaloriesChartContent = () => {
         tabIndex="0"
       >
         <h1 className="calories-headline">You still need to consume</h1>
-        <p className="calories-number">3186</p>
+        <p className="calories-number">{currentCaloriesRemainder}</p>
         <h2 className="calories-subheadline">calories to fit your daily need</h2>
       </div>
     );
@@ -40,8 +65,8 @@ const CaloriesChartContent = () => {
       tabIndex="0"
     >
       <p className="alternative-calories-chart-content-headline">calories:</p>
-      <p className="alternative-calories-chart-content-number">123/3309</p>
-      <p className="alternative-calories-chart-content-percent">4%</p>
+      <p className="alternative-calories-chart-content-number">{currentCalories}/{dailyCaloriesNeed}</p>
+      <p className="alternative-calories-chart-content-percent">{currentPercentOfDailyCaloriesNeed}%</p>
     </div>
   );
 };

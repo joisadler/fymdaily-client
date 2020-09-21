@@ -2,11 +2,42 @@ import React, { useState, useRef, useLayoutEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import CaloriesChartContent from './CaloriesChartContent';
 
-const CaloriesChart = () => {
+const CaloriesChart = ({ numbers }) => {
+  const {
+    dailyCaloriesNeed,
+    dailyProteinsNeed,
+    dailyFatsNeed,
+    dailyCarbsNeed,
+    currentCalories,
+    currentProteins,
+    currentFats,
+    currentCarbs,
+    currentCaloriesRemainder,
+    currentPercentOfDailyCaloriesNeed,
+    currentPercentOfDailyProteinsNeed,
+    currentPercentOfDailyFatsNeed,
+    currentPercentOfDailyCarbsNeed,
+    percentageOfProteinsInDailyCaloriesNeed,
+    percentageOfFatsInDailyCaloriesNeed,
+    percentageOfCarbsInDailyCaloriesNeed,
+    percentageOfCaloriesRemainderInDailyCaloriesNeed,
+    percentageOfEmptyCaloriesInDailyCaloriesNeed,
+    percentOfProteinsInCurrentAmountOfCalories,
+    percentOfFatsInCurrentAmountOfCalories,
+    percentOfCarbsInCurrentAmountOfCalories,
+    percentOfEmptyCaloriesInCurrentAmountOfCalories,
+  } = numbers;
   const data = {
-    labels: ['Proteins', 'Fats', 'Carbs', 'Empty calories', 'Still need to consume'],
+    labels: ['Proteins', 'Fats', 'Carbs', 'Empty Calories', 'Still need to consume'],
     datasets: [{
-      data: [10, 20, 30, 5, 35],
+      data: [
+        percentageOfProteinsInDailyCaloriesNeed,
+        percentageOfFatsInDailyCaloriesNeed,
+        percentageOfCarbsInDailyCaloriesNeed,
+        percentageOfEmptyCaloriesInDailyCaloriesNeed,
+        percentageOfCaloriesRemainderInDailyCaloriesNeed,
+      ],
+
       backgroundColor: [
         '#109618',
         '#ff9900',
@@ -65,7 +96,7 @@ const CaloriesChart = () => {
           height: innerSize,
         }}
       >
-        <CaloriesChartContent />
+        <CaloriesChartContent numbers={numbers} />
       </div>
     </article>
   );

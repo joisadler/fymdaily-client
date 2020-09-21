@@ -1,14 +1,22 @@
 import React from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useAsync } from 'react-async-hook';
+import { getEatenFoods } from '../services/history.service';
+import getNumbers from '../services/calculation.service';
 import CaloriesChart from '../cmps/CaloriesChart';
 import Navbar from '../cmps/Navbar';
 
 const HomePage = () => {
-  // const user = useSelector(state => state.user.loggedInUser);
+  const user = useSelector(state => state.user.loggedInUser);
+  const eatenFoods = useAsync(getEatenFoods, [user._id]).result;
+  const numbers = eatenFoods ? getNumbers(user, eatenFoods) : {};
+  console.log(numbers);
+  console.log(eatenFoods);
+
   return (
     <>
       <main className="page">
-        <CaloriesChart />
+        <CaloriesChart numbers={numbers} />
         <section className="macros-container">
           <div className="macros-line">
             <div className="macros-image-container proteins-image-container" />
