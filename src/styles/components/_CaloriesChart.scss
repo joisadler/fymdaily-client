@@ -2,6 +2,10 @@
   position: relative;
   width: 100%;
   height: 40vh;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .calories-chart-inner {
@@ -9,6 +13,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  // border: 1px solid black;
   border-radius: 50%;
+}
+
+.chartjs-render-monitor {
+  position: relative;
+  z-index: 1;
 }

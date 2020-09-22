@@ -92,11 +92,17 @@ const getNumbers = (user, eatenFoods) => {
           + currentCarbsToCalories))
           / dailyCaloriesNeed) * 100)
     : 0;
+
   const percentageOfCaloriesRemainderInDailyCaloriesNeed = 100
     - percentageOfProteinsInDailyCaloriesNeed
     - percentageOfFatsInDailyCaloriesNeed
     - percentageOfCarbsInDailyCaloriesNeed
-    - percentageOfEmptyCaloriesInDailyCaloriesNeed;
+    - percentageOfEmptyCaloriesInDailyCaloriesNeed > 0
+    ? 100
+    - percentageOfProteinsInDailyCaloriesNeed
+    - percentageOfFatsInDailyCaloriesNeed
+    - percentageOfCarbsInDailyCaloriesNeed
+    - percentageOfEmptyCaloriesInDailyCaloriesNeed : 0;
 
   const percentOfProteinsInCurrentAmountOfCalories = (currentProteinsToCalories
       / currentCalories) * 100;

@@ -10,10 +10,6 @@
   font-family: Montserrat, Open Sans, Helvetica, Arial, sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-
-  &:focus {
-    outline: none;
-  }
 }
 
 .calories-number {
@@ -28,10 +24,10 @@
 
 .calories-headline,
 .calories-subheadline {
-  font-size: 1.9vmin;
+  font-size: 1.8vmin;
 
   @media (min-width: $tablet) {
-    font-size: 1.3vmin;
+    font-size: 1.2vmin;
   }
 }
 

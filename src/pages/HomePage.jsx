@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useAsync } from 'react-async-hook';
 import { getEatenFoods } from '../services/history.service';
@@ -7,16 +7,23 @@ import CaloriesChart from '../cmps/CaloriesChart';
 import Navbar from '../cmps/Navbar';
 
 const HomePage = () => {
+  const [isAlternateContentShown, setIsAlternateContentShown] = useState(false);
+  const toggleAlternateContent = () => {
+    setIsAlternateContentShown(!isAlternateContentShown);
+  };
+
   const user = useSelector(state => state.user.loggedInUser);
   const eatenFoods = useAsync(getEatenFoods, [user._id]).result;
   const numbers = eatenFoods ? getNumbers(user, eatenFoods) : {};
-  console.log(numbers);
-  console.log(eatenFoods);
 
   return (
     <>
       <main className="page">
-        <CaloriesChart numbers={numbers} />
+        <CaloriesChart
+          numbers={numbers}
+          isAlternateContentShown={isAlternateContentShown}
+          toggleAlternateContent={toggleAlternateContent}
+        />
         <section className="macros-container">
           <div className="macros-line">
             <div className="macros-image-container proteins-image-container" />
