@@ -5,6 +5,7 @@ import { getEatenFoods } from '../services/history.service';
 import getNumbers from '../services/calculation.service';
 import CaloriesChart from '../cmps/CaloriesChart';
 import Navbar from '../cmps/Navbar';
+import MacrosContainer from '../cmps/MacrosContainer';
 
 const HomePage = () => {
   const [isAlternateContentShown, setIsAlternateContentShown] = useState(false);
@@ -24,29 +25,7 @@ const HomePage = () => {
           isAlternateContentShown={isAlternateContentShown}
           toggleAlternateContent={toggleAlternateContent}
         />
-        <section className="macros-container">
-          <div className="macros-line">
-            <div className="macros-image-container proteins-image-container" />
-            <div className="macros-progress-bar">
-              <div className="percent-container proteins-percent-container" />
-              <div className="macros-progress-bar-inner proteins-progress-bar-inner" />
-            </div>
-          </div>
-          <div className="macros-line">
-            <div className="macros-image-container fats-image-container" />
-            <div className="macros-progress-bar">
-              <div className="percent-container fats-percent-container" />
-              <div className="macros-progress-bar-inner fats-progress-bar-inner" />
-            </div>
-          </div>
-          <div className="macros-line">
-            <div className="macros-image-container carbs-image-container" />
-            <div className="macros-progress-bar">
-              <div className="percent-container carbs-percent-container" />
-              <div className="macros-progress-bar-inner carbs-progress-bar-inner" />
-            </div>
-          </div>
-        </section>
+        <MacrosContainer numbers={numbers} />
       </main>
       <Navbar />
     </>

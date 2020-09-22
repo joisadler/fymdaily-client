@@ -49,6 +49,7 @@ const CaloriesChart = ({
       titleFontFamily: 'Montserrat, sans-serif',
       bodyFontFamily: 'Montserrat, sans-serif',
       backgroundColor: 'rgba(0, 0, 0, 0.9)',
+      displayColors: false,
       callbacks: {
         title(tooltipItem, _data) {
           return _data.labels[tooltipItem[0].index];

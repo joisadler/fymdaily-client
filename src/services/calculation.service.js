@@ -27,7 +27,6 @@ const caloriesPerGramOfCarb = 4;
 
 const getNumbers = (user, eatenFoods) => {
   const {
-    // _id,
     bodyWeight,
     height,
     gender,
@@ -104,16 +103,16 @@ const getNumbers = (user, eatenFoods) => {
     - percentageOfCarbsInDailyCaloriesNeed
     - percentageOfEmptyCaloriesInDailyCaloriesNeed : 0;
 
-  const percentOfProteinsInCurrentAmountOfCalories = (currentProteinsToCalories
-      / currentCalories) * 100;
-  const percentOfFatsInCurrentAmountOfCalories = (currentFatsToCalories
-      / currentCalories) * 100;
-  const percentOfCarbsInCurrentAmountOfCalories = (currentCarbsToCalories
-      / currentCalories) * 100;
-  const percentOfEmptyCaloriesInCurrentAmountOfCalories = 100
-    - percentOfProteinsInCurrentAmountOfCalories
-    - percentOfFatsInCurrentAmountOfCalories
-    - percentOfCarbsInCurrentAmountOfCalories;
+  // const percentOfProteinsInCurrentAmountOfCalories = (currentProteinsToCalories
+  //     / currentCalories) * 100;
+  // const percentOfFatsInCurrentAmountOfCalories = (currentFatsToCalories
+  //     / currentCalories) * 100;
+  // const percentOfCarbsInCurrentAmountOfCalories = (currentCarbsToCalories
+  //     / currentCalories) * 100;
+  // const percentOfEmptyCaloriesInCurrentAmountOfCalories = 100
+  //   - percentOfProteinsInCurrentAmountOfCalories
+  //   - percentOfFatsInCurrentAmountOfCalories
+  //   - percentOfCarbsInCurrentAmountOfCalories;
 
   return {
     dailyCaloriesNeed: Math.round(dailyCaloriesNeed),
@@ -134,10 +133,10 @@ const getNumbers = (user, eatenFoods) => {
     percentageOfCarbsInDailyCaloriesNeed: Math.round(percentageOfCarbsInDailyCaloriesNeed),
     percentageOfCaloriesRemainderInDailyCaloriesNeed: Math.round(percentageOfCaloriesRemainderInDailyCaloriesNeed),
     percentageOfEmptyCaloriesInDailyCaloriesNeed: Math.round(percentageOfEmptyCaloriesInDailyCaloriesNeed),
-    percentOfProteinsInCurrentAmountOfCalories: Math.round(percentOfProteinsInCurrentAmountOfCalories),
-    percentOfFatsInCurrentAmountOfCalories: Math.round(percentOfFatsInCurrentAmountOfCalories),
-    percentOfCarbsInCurrentAmountOfCalories: Math.round(percentOfCarbsInCurrentAmountOfCalories),
-    percentOfEmptyCaloriesInCurrentAmountOfCalories: Math.round(percentOfEmptyCaloriesInCurrentAmountOfCalories),
+    // percentOfProteinsInCurrentAmountOfCalories: Math.round(percentOfProteinsInCurrentAmountOfCalories),
+    // percentOfFatsInCurrentAmountOfCalories: Math.round(percentOfFatsInCurrentAmountOfCalories),
+    // percentOfCarbsInCurrentAmountOfCalories: Math.round(percentOfCarbsInCurrentAmountOfCalories),
+    // percentOfEmptyCaloriesInCurrentAmountOfCalories: Math.round(percentOfEmptyCaloriesInCurrentAmountOfCalories),
   };
 };
 
