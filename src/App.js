@@ -9,6 +9,7 @@ import AddFoodPage from './pages/AddFoodPage';
 import CreateFoodPage from './pages/CreateFoodPage';
 import AccountSettingsPage from './pages/AccountSettingsPage';
 import PreferencesPage from './pages/PreferencesPage';
+import StatisticsPage from './pages/StatisticsPage';
 import SettingsMenu from './cmps/SettingsMenu';
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
         <Route path="/create-food" component={CreateFoodPage} />
         <Route path="/account-settings" component={AccountSettingsPage} />
         <Route path="/preferences" component={PreferencesPage} />
-        {/* <Route path="/statistics" component={StatisticsPage} /> */}
+        <Route path="/statistics" component={StatisticsPage} />
       </Switch>
     </div>
   );
