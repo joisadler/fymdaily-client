@@ -12,6 +12,7 @@ const buttonsData = {
   '/account-settings': defaultButtonsData,
   '/preferences': defaultButtonsData,
   '/statistics': defaultButtonsData,
+  '/user-settings': defaultButtonsData,
   '/home': [
     { to: '/eaten-foods', icon: ['fas', 'list'], key: 1 },
     { to: '/add-food', icon: ['fas', 'utensils'], key: 2 },
