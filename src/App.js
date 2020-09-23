@@ -7,10 +7,12 @@ import UserSettingsPage from './pages/UserSettingsPage';
 import EatenFoodsPage from './pages/EatenFoodsPage';
 import AddFoodPage from './pages/AddFoodPage';
 import CreateFoodPage from './pages/CreateFoodPage';
+import SettingsMenu from './cmps/SettingsMenu';
 
 function App() {
   return (
     <div className="App">
+      <SettingsMenu />
       <Switch>
         <Route exact path="/" component={EntryPage} />
         <Route path="/home" component={HomePage} />

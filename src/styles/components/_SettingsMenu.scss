@@ -1,0 +1,19 @@
+.settings-menu {
+  position: absolute;
+  top: 0;
+  z-index: 9999;
+  width: 100%;
+  height: calc(var(--vh, 1vh) * 85);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #fff;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.3s;
+}
+
+.settings-menu-shown {
+  transform: scaleY(1);
+}

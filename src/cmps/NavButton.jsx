@@ -13,6 +13,7 @@ const NavButton = ({ to, icon }) => {
     if (to === '/menu') {
       return dispatch(MenuActions.toggleMenu());
     }
+    dispatch(MenuActions.hideMenu());
     history.push(to);
   };
   return (
