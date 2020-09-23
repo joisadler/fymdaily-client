@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import menuActions from '../actions/SettingsMenuActions';
 import { logout } from '../actions/UserActions';
 import Footer from './Footer';
@@ -17,8 +17,8 @@ const SettingsMenu = () => {
   };
 
   const onLogOut = () => {
-    dispatch(logout());
     hideMenu();
+    dispatch(logout());
     history.push('/');
   };
 
@@ -27,15 +27,43 @@ const SettingsMenu = () => {
       className={`settings-menu ${isShown ? 'settings-menu-shown' : ''}`}
     >
       <header className="settings-menu-header">
-        <h2 className="settings-menu-username">{username}</h2>
+        <h2 className="settings-menu-title">{username}</h2>
         <button
+          className="settings-menu-logout-button"
           type="button"
           onClick={onLogOut}
-        >
-          Log Out
-        </button>
+          aria-label="Log out"
+        />
       </header>
-      <nav className="settins-menu-nav">
+      <nav className="settings-menu-nav">
+        <NavLink
+          className="settings-menu-nav-link"
+          to="/user-settings"
+          onClick={hideMenu}
+        >
+          User Settings
+        </NavLink>
+        <NavLink
+          className="settings-menu-nav-link"
+          to="/account-settings"
+          onClick={hideMenu}
+        >
+          Account Settings
+        </NavLink>
+        <NavLink
+          className="settings-menu-nav-link"
+          to="/preferences"
+          onClick={hideMenu}
+        >
+          Preferences
+        </NavLink>
+        <NavLink
+          className="settings-menu-nav-link"
+          to="/statistics"
+          onClick={hideMenu}
+        >
+          Statistics
+        </NavLink>
       </nav>
       <Footer />
     </aside>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
 import './styles/global.scss';
 import EntryPage from './pages/EntryPage';
 import HomePage from './pages/HomePage';
@@ -10,9 +10,12 @@ import CreateFoodPage from './pages/CreateFoodPage';
 import SettingsMenu from './cmps/SettingsMenu';
 
 function App() {
+  const location = useLocation();
+  const currentPath = location.pathname;
+
   return (
     <div className="App">
-      <SettingsMenu />
+      { (currentPath !== '/') && <SettingsMenu />}
       <Switch>
         <Route exact path="/" component={EntryPage} />
         <Route path="/home" component={HomePage} />
@@ -21,7 +24,8 @@ function App() {
         <Route path="/user-settings" component={UserSettingsPage} />
         <Route path="/create-food" component={CreateFoodPage} />
         {/* <Route path="/account-settings" component={AccountSettingsPage} /> */}
-        {/* <Route path="/user-preferences" component={UserPreferencesPage} /> */}
+        {/* <Route path="/preferences" component={PreferencesPage} /> */}
+        {/* <Route path="/statistics" component={StatisticsPage} /> */}
       </Switch>
     </div>
   );
