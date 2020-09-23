@@ -2,7 +2,14 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import NavButton from './NavButton';
 
+const defaultButtonsData = [
+  { to: '/eaten-foods', icon: ['fas', 'list'], key: 1 },
+  { to: '/add-food', icon: ['fas', 'utensils'], key: 2 },
+  { to: '/home', icon: ['fas', 'home'], key: 3 },
+];
+
 const buttonsData = {
+  '/account-settings': defaultButtonsData,
   '/home': [
     { to: '/eaten-foods', icon: ['fas', 'list'], key: 1 },
     { to: '/add-food', icon: ['fas', 'utensils'], key: 2 },
