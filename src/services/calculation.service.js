@@ -45,10 +45,10 @@ const getNumbers = (user, eatenFoods) => {
   const leanBodyMass = (bodyWeight * (100 - bodyFatPercentage)) / 100;
   const basalMetabolicRate = 370 + (21.6 * leanBodyMass); // Katch-McArdle equation
   const totalEnergyExpenditure = basalMetabolicRate * physicalActivityRatio;
-  const dailyCaloriesNeed = totalEnergyExpenditure * calorieSurplusRatio;
-  const dailyProteinsNeed = leanBodyMass * proteinNeedPerKg[goal];
-  const dailyFatsNeed = (dailyCaloriesNeed * 0.3) / caloriesPerGramOfFat;
-  const dailyCarbsNeed = (dailyCaloriesNeed - (dailyProteinsNeed * caloriesPerGramOfProtein) - (dailyFatsNeed * caloriesPerGramOfFat)) / caloriesPerGramOfCarb;
+  const dailyCalorieNeed = totalEnergyExpenditure * calorieSurplusRatio;
+  const dailyProteinNeed = leanBodyMass * proteinNeedPerKg[goal];
+  const dailyFatNeed = (dailyCalorieNeed * 0.3) / caloriesPerGramOfFat;
+  const dailyCarbNeed = (dailyCalorieNeed - (dailyProteinNeed * caloriesPerGramOfProtein) - (dailyFatNeed * caloriesPerGramOfFat)) / caloriesPerGramOfCarb;
 
   const currentCalories = eatenFoods
     .reduce((acc, current) => acc
@@ -60,48 +60,48 @@ const getNumbers = (user, eatenFoods) => {
   const currentCarbs = eatenFoods
     .reduce((acc, current) => acc + (current.carbs * current.weight) / 100, 0);
 
-  const currentCaloriesRemainder = dailyCaloriesNeed - currentCalories;
+  const currentCaloriesRemainder = dailyCalorieNeed - currentCalories;
 
-  const currentPercentOfDailyCaloriesNeed = (currentCalories
-    / dailyCaloriesNeed) * 100;
-  const currentPercentOfDailyProteinsNeed = (currentProteins
-    / dailyProteinsNeed) * 100;
-  const currentPercentOfDailyFatsNeed = (currentFats
-    / dailyFatsNeed) * 100;
-  const currentPercentOfDailyCarbsNeed = (currentCarbs
-    / dailyCarbsNeed) * 100;
+  const currentPercentOfDailyCalorieNeed = (currentCalories
+    / dailyCalorieNeed) * 100;
+  const currentPercentOfDailyProteinNeed = (currentProteins
+    / dailyProteinNeed) * 100;
+  const currentPercentOfDailyFatNeed = (currentFats
+    / dailyFatNeed) * 100;
+  const currentPercentOfDailyCarbNeed = (currentCarbs
+    / dailyCarbNeed) * 100;
 
   const currentProteinsToCalories = currentProteins * caloriesPerGramOfProtein;
   const currentFatsToCalories = currentFats * caloriesPerGramOfFat;
   const currentCarbsToCalories = currentCarbs * caloriesPerGramOfCarb;
-  const percentageOfProteinsInDailyCaloriesNeed = (currentProteinsToCalories
-      / dailyCaloriesNeed) * 100;
-  const percentageOfFatsInDailyCaloriesNeed = (currentFatsToCalories
-      / dailyCaloriesNeed) * 100;
-  const percentageOfCarbsInDailyCaloriesNeed = (currentCarbsToCalories
-      / dailyCaloriesNeed) * 100;
-  const percentageOfEmptyCaloriesInDailyCaloriesNeed = (((currentCalories
+  const percentageOfProteinsInDailyCalorieNeed = (currentProteinsToCalories
+      / dailyCalorieNeed) * 100;
+  const percentageOfFatsInDailyCalorieNeed = (currentFatsToCalories
+      / dailyCalorieNeed) * 100;
+  const percentageOfCarbsInDailyCalorieNeed = (currentCarbsToCalories
+      / dailyCalorieNeed) * 100;
+  const percentageOfEmptyCaloriesInDailyCalorieNeed = (((currentCalories
       - (currentProteinsToCalories
         + currentFatsToCalories
         + currentCarbsToCalories))
-        / dailyCaloriesNeed) * 100) > 0
+        / dailyCalorieNeed) * 100) > 0
     ? (((currentCalories
         - (currentProteinsToCalories
           + currentFatsToCalories
           + currentCarbsToCalories))
-          / dailyCaloriesNeed) * 100)
+          / dailyCalorieNeed) * 100)
     : 0;
 
-  const percentageOfCaloriesRemainderInDailyCaloriesNeed = 100
-    - percentageOfProteinsInDailyCaloriesNeed
-    - percentageOfFatsInDailyCaloriesNeed
-    - percentageOfCarbsInDailyCaloriesNeed
-    - percentageOfEmptyCaloriesInDailyCaloriesNeed > 0
+  const percentageOfCaloriesRemainderInDailyCalorieNeed = 100
+    - percentageOfProteinsInDailyCalorieNeed
+    - percentageOfFatsInDailyCalorieNeed
+    - percentageOfCarbsInDailyCalorieNeed
+    - percentageOfEmptyCaloriesInDailyCalorieNeed > 0
     ? 100
-    - percentageOfProteinsInDailyCaloriesNeed
-    - percentageOfFatsInDailyCaloriesNeed
-    - percentageOfCarbsInDailyCaloriesNeed
-    - percentageOfEmptyCaloriesInDailyCaloriesNeed : 0;
+    - percentageOfProteinsInDailyCalorieNeed
+    - percentageOfFatsInDailyCalorieNeed
+    - percentageOfCarbsInDailyCalorieNeed
+    - percentageOfEmptyCaloriesInDailyCalorieNeed : 0;
 
   // const percentOfProteinsInCurrentAmountOfCalories = (currentProteinsToCalories
   //     / currentCalories) * 100;
@@ -115,24 +115,24 @@ const getNumbers = (user, eatenFoods) => {
   //   - percentOfCarbsInCurrentAmountOfCalories;
 
   return {
-    dailyCaloriesNeed: Math.round(dailyCaloriesNeed),
-    dailyProteinsNeed: Math.round(dailyProteinsNeed),
-    dailyFatsNeed: Math.round(dailyFatsNeed),
-    dailyCarbsNeed: Math.round(dailyCarbsNeed),
+    dailyCalorieNeed: Math.round(dailyCalorieNeed),
+    dailyProteinNeed: Math.round(dailyProteinNeed),
+    dailyFatNeed: Math.round(dailyFatNeed),
+    dailyCarbNeed: Math.round(dailyCarbNeed),
     currentCalories: Math.round(currentCalories),
     currentProteins: Math.round(currentProteins),
     currentFats: Math.round(currentFats),
     currentCarbs: Math.round(currentCarbs),
     currentCaloriesRemainder: Math.round(currentCaloriesRemainder),
-    currentPercentOfDailyCaloriesNeed: Math.round(currentPercentOfDailyCaloriesNeed),
-    currentPercentOfDailyProteinsNeed: Math.round(currentPercentOfDailyProteinsNeed),
-    currentPercentOfDailyFatsNeed: Math.round(currentPercentOfDailyFatsNeed),
-    currentPercentOfDailyCarbsNeed: Math.round(currentPercentOfDailyCarbsNeed),
-    percentageOfProteinsInDailyCaloriesNeed: Math.round(percentageOfProteinsInDailyCaloriesNeed),
-    percentageOfFatsInDailyCaloriesNeed: Math.round(percentageOfFatsInDailyCaloriesNeed),
-    percentageOfCarbsInDailyCaloriesNeed: Math.round(percentageOfCarbsInDailyCaloriesNeed),
-    percentageOfCaloriesRemainderInDailyCaloriesNeed: Math.round(percentageOfCaloriesRemainderInDailyCaloriesNeed),
-    percentageOfEmptyCaloriesInDailyCaloriesNeed: Math.round(percentageOfEmptyCaloriesInDailyCaloriesNeed),
+    currentPercentOfDailyCalorieNeed: Math.round(currentPercentOfDailyCalorieNeed),
+    currentPercentOfDailyProteinNeed: Math.round(currentPercentOfDailyProteinNeed),
+    currentPercentOfDailyFatNeed: Math.round(currentPercentOfDailyFatNeed),
+    currentPercentOfDailyCarbNeed: Math.round(currentPercentOfDailyCarbNeed),
+    percentageOfProteinsInDailyCalorieNeed: Math.round(percentageOfProteinsInDailyCalorieNeed),
+    percentageOfFatsInDailyCalorieNeed: Math.round(percentageOfFatsInDailyCalorieNeed),
+    percentageOfCarbsInDailyCalorieNeed: Math.round(percentageOfCarbsInDailyCalorieNeed),
+    percentageOfCaloriesRemainderInDailyCalorieNeed: Math.round(percentageOfCaloriesRemainderInDailyCalorieNeed),
+    percentageOfEmptyCaloriesInDailyCalorieNeed: Math.round(percentageOfEmptyCaloriesInDailyCalorieNeed),
     // percentOfProteinsInCurrentAmountOfCalories: Math.round(percentOfProteinsInCurrentAmountOfCalories),
     // percentOfFatsInCurrentAmountOfCalories: Math.round(percentOfFatsInCurrentAmountOfCalories),
     // percentOfCarbsInCurrentAmountOfCalories: Math.round(percentOfCarbsInCurrentAmountOfCalories),

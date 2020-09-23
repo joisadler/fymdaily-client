@@ -9,21 +9,21 @@ const CaloriesChart = ({
   toggleAlternateContent,
 }) => {
   const {
-    percentageOfProteinsInDailyCaloriesNeed,
-    percentageOfFatsInDailyCaloriesNeed,
-    percentageOfCarbsInDailyCaloriesNeed,
-    percentageOfCaloriesRemainderInDailyCaloriesNeed,
-    percentageOfEmptyCaloriesInDailyCaloriesNeed,
+    percentageOfProteinsInDailyCalorieNeed,
+    percentageOfFatsInDailyCalorieNeed,
+    percentageOfCarbsInDailyCalorieNeed,
+    percentageOfCaloriesRemainderInDailyCalorieNeed,
+    percentageOfEmptyCaloriesInDailyCalorieNeed,
   } = numbers;
   const data = {
     labels: ['Proteins', 'Fats', 'Carbs', 'Empty Calories', 'Still need to consume'],
     datasets: [{
       data: [
-        percentageOfProteinsInDailyCaloriesNeed,
-        percentageOfFatsInDailyCaloriesNeed,
-        percentageOfCarbsInDailyCaloriesNeed,
-        percentageOfEmptyCaloriesInDailyCaloriesNeed,
-        percentageOfCaloriesRemainderInDailyCaloriesNeed,
+        percentageOfProteinsInDailyCalorieNeed,
+        percentageOfFatsInDailyCalorieNeed,
+        percentageOfCarbsInDailyCalorieNeed,
+        percentageOfEmptyCaloriesInDailyCalorieNeed,
+        percentageOfCaloriesRemainderInDailyCalorieNeed,
       ],
 
       backgroundColor: [
@@ -45,7 +45,7 @@ const CaloriesChart = ({
       display: false,
     },
     tooltips: {
-      // position: 'nearest',
+      position: 'nearest',
       titleFontFamily: 'Montserrat, sans-serif',
       bodyFontFamily: 'Montserrat, sans-serif',
       backgroundColor: 'rgba(0, 0, 0, 0.9)',
@@ -60,7 +60,7 @@ const CaloriesChart = ({
           const percent = Math.round(
             (dataset.data[tooltipItem.index] / total) * 100,
           );
-          return `${percent}% of total intake`;
+          return `${percent}% of total calorie intake`;
         },
       },
     },

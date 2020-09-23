@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 const CaloriesChartContent = ({ numbers, isAlternateContentShown }) => {
   const {
-    dailyCaloriesNeed,
+    dailyCalorieNeed,
     currentCalories,
     currentCaloriesRemainder,
-    currentPercentOfDailyCaloriesNeed,
+    currentPercentOfDailyCalorieNeed,
   } = numbers;
 
   if (!isAlternateContentShown) {
@@ -40,10 +40,10 @@ const CaloriesChartContent = ({ numbers, isAlternateContentShown }) => {
       <p className="alternative-calories-chart-content-number">
         {currentCalories}
         /
-        {dailyCaloriesNeed}
+        {dailyCalorieNeed}
       </p>
       <p className="alternative-calories-chart-content-percent">
-        {currentPercentOfDailyCaloriesNeed}
+        {currentPercentOfDailyCalorieNeed}
         %
       </p>
     </div>
