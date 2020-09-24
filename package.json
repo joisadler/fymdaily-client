@@ -17,6 +17,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "awesome-debounce-promise": "^2.1.0",
     "axios": "^0.20.0",
     "chart.js": "^2.9.3",
     "history": "^4.10.1",
@@ -31,7 +32,8 @@
     "react-scripts": "3.4.3",
     "react-tooltip": "^4.2.10",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "use-constant": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
