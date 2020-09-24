@@ -32,7 +32,7 @@ const AddFoodPage = () => {
             onChange={(e) => { handleSearchInput(e.target); }}
           />
         </header>
-        <ul className="food-cards">
+        <ul className="add-food-cards">
           {search.loading && <p>Loading...</p>}
           {search.result && (
             search.result.map(food => (

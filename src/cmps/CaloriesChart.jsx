@@ -76,7 +76,7 @@ const CaloriesChart = ({
         window
           .getComputedStyle(chartRef.current)
           .height
-          .slice(0, -2)
+          .slice(0, -2),
       );
       const newInnerSize = newOuterSize * 0.8;
       setInnerSize(newInnerSize);
