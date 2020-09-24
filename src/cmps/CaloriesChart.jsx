@@ -34,7 +34,7 @@ const CaloriesChart = ({
         '#f2f2f2',
       ],
       borderColor: '#000',
-      borderWidth: 1,
+      borderWidth: 0,
     }],
   };
 
@@ -68,17 +68,19 @@ const CaloriesChart = ({
 
   const chartRef = useRef(null);
   const [innerSize, setInnerSize] = useState(-1);
+  const [outerSize, setOuterSize] = useState(-1);
 
   const setSize = () => {
     if (chartRef.current) {
-      const newSize = (
+      const newOuterSize = Number(
         window
           .getComputedStyle(chartRef.current)
           .height
           .slice(0, -2)
-          * 0.8
       );
-      setInnerSize(newSize);
+      const newInnerSize = newOuterSize * 0.8;
+      setInnerSize(newInnerSize);
+      setOuterSize(newOuterSize);
     }
   };
 
@@ -88,7 +90,7 @@ const CaloriesChart = ({
     return () => {
       window.removeEventListener('resize', setSize);
     };
-  }, [innerSize]);
+  }, [innerSize, outerSize]);
 
   const handleKeyDown = (e) => {
     const code = e.charCode || e.keyCode;
@@ -112,6 +114,13 @@ const CaloriesChart = ({
         className="calories-chart"
         data={data}
         options={options}
+      />
+      <div
+        className="calories-chart-outer"
+        style={{
+          width: outerSize,
+          height: outerSize,
+        }}
       />
       <div
         className="calories-chart-inner"
