@@ -1,23 +1,18 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useAsync } from 'react-async-hook';
-import { getFoods } from '../services/food.service';
+import React, { useRef, useEffect } from 'react';
 import useSearchFood from '../hooks/useSearchFood';
+import { getRandomStr } from '../services/util.servise';
 import Navbar from '../cmps/Navbar';
-
-const _getRandomStr = () => Math.random()
-  .toString(36)
-  .substring(2, 15)
-  + Math.random()
-    .toString(36)
-    .substring(2, 15);
+import FoodCard from '../cmps/FoodCard';
 
 const AddFoodPage = () => {
-  // const [inputText, setInputText] = useState('');
   const { inputText, setInputText, search } = useSearchFood();
 
-  // const foods = useAsync(getFoods, [inputText]).result;
   console.log(search.result)
+
+  const searchInput = useRef(null);
+  useEffect(() => {
+    searchInput.current.focus();
+  }, []);
 
   const handleSearchInput = ({ value }) => {
     setInputText(value);
@@ -26,28 +21,25 @@ const AddFoodPage = () => {
   return (
     <>
       <main className="page">
-        <h1>Add eaten food</h1>
-        {search.loading && <div>...</div>}
-        {search.error && <div>Error: {search.error.message}</div>}
-        {search.result && (
-          <div>
-            <div>Results: {search.result.length}</div>
-            <ul>
-              {search.result.map(food => (
-                <li key={_getRandomStr() + food.name}>{food.name}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-        <div className="options-container">
+        <header className="options-container">
+          <h1 className="page-title">Add eaten food</h1>
           <input
             type="search"
             className="add-food-search"
             placeholder="Search food"
             value={inputText}
+            ref={searchInput}
             onChange={(e) => { handleSearchInput(e.target); }}
           />
-        </div>
+        </header>
+        <ul className="food-cards">
+          {search.loading && <p>Loading...</p>}
+          {search.result && (
+            search.result.map(food => (
+              <FoodCard key={getRandomStr() + food.name} food={food} />
+            ))
+          )}
+        </ul>
       </main>
       <Navbar />
     </>
