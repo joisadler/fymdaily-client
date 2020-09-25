@@ -32,7 +32,7 @@
     border: none;
 
     &:focus {
-      outline: none;
+      outline: 1px solid green;
     }
   }
 
@@ -86,8 +86,9 @@
     margin-inline-end: 0.5rem;
 
     &:focus {
-      outline: none;
+      outline: 1px solid green;
     }
+
   }
 
   &-weight-inc-button,
@@ -100,7 +101,7 @@
     cursor: pointer;
 
     &:focus {
-      outline: none;
+      outline: 1px solid green;
     }
   }
 
