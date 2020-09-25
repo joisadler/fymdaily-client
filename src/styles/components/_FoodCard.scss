@@ -27,24 +27,3 @@
   white-space: nowrap;
   overflow: hidden;
 }
-
-.add-food-modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 70vw;
-  height: 70vw;
-  // right: auto;
-  // bottom: auto;
-  // margin-right: -50%;
-  border: 1px solid black;
-  border-radius: 0;
-  background-color: #fff;
-  opacity: 1;
-  outline: none;
-  transform: translate(-50%, -50%);
-
-  @media (min-width: desktop) {
-
-  }
-}

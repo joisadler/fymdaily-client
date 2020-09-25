@@ -7,8 +7,6 @@ import FoodCard from '../cmps/FoodCard';
 const AddFoodPage = () => {
   const { inputText, setInputText, search } = useSearchFood();
 
-  console.log(search.result)
-
   const searchInput = useRef(null);
   useEffect(() => {
     searchInput.current.focus();

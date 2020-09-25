@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Modal from 'react-modal';
+import AddFoodModal from './AddFoodModal';
 
 // eslint-disable-next-line arrow-body-style
 const FoodCard = ({ food }) => {
@@ -13,16 +13,15 @@ const FoodCard = ({ food }) => {
   const fats = Math.round(+food.fats);
   const carbs = Math.round(+food.carbs);
 
-  Modal.setAppElement('#root');
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
-    setIsOpen(true);
+    setIsModalOpen(true);
   };
 
   const closeModal = (e) => {
-    e.stopPropagation();
-    setIsOpen(false);
+    if (e) e.stopPropagation();
+    setIsModalOpen(false);
   };
 
   const handleKeyDown = (e) => {
@@ -46,37 +45,16 @@ const FoodCard = ({ food }) => {
       <p className="add-food-card-info">
         {`Calories: ${calories} | Proteins: ${proteins} | Fats: ${fats} | Carbs: ${carbs}`}
       </p>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        contentLabel="Add food"
-        className="add-food-modal"
-      >
-        <button type="button" onClick={e => closeModal(e)}>&times;</button>
-        <h2 className="add-food-modal-title">
-          {`${name}${brand !== '' ? `, ${brand}` : ''}`}
-        </h2>
-        <div className="add-food-modal-info">
-          <p>
-            {`Calories: ${calories}`}
-          </p>
-          <p>
-            {`Proteins: ${proteins}`}
-          </p>
-          <p>
-            {`Fats: ${fats}`}
-          </p>
-          <p>
-            {`Carbs: ${carbs}`}
-          </p>
-        </div>
-        <form>
-          <label>
-            Weight:
-            <input type="number" min="0" max="1000" step="10" />
-          </label>
-        </form>
-      </Modal>
+      <AddFoodModal
+        isModalOpen={isModalOpen}
+        closeModal={closeModal}
+        name={name}
+        brand={brand}
+        calories={calories}
+        proteins={proteins}
+        fats={fats}
+        carbs={fats}
+      />
     </li>
   );
 };
