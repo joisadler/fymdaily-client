@@ -8,18 +8,16 @@
   }
 }
 
-.calories-chart-inner,
-.calories-chart-outer {
+.calories-chart-inner {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  border: 1px solid black;
 }
 
 .calories-chart-outer {
-  z-index: 99999;
+  z-index: 0;
 }
 
 .chartjs-render-monitor {
