@@ -12,6 +12,7 @@ import {
   faCog,
   faHome,
   faUtensils,
+  faFolderPlus,
 } from '@fortawesome/free-solid-svg-icons';
 
 import history from './history';
@@ -26,6 +27,7 @@ library.add(
   faCog,
   faHome,
   faUtensils,
+  faFolderPlus,
 );
 
 ReactDOM.render(

@@ -18,8 +18,3 @@ export async function addEatenFood(food) {
   const updatedEntry = await httpService.post('history/food', data);
   return updatedEntry.eaten_foods;
 }
-
-// export default {
-//   getHistoryEntry,
-//   getEatenFoods,
-// };

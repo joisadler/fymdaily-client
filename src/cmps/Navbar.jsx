@@ -21,7 +21,9 @@ const buttonsData = {
   '/add-food': [
     { to: '/eaten-foods', icon: ['fas', 'list'], key: 1 },
     { to: '/home', icon: ['fas', 'home'], key: 2 },
-    { to: '/menu', icon: ['fas', 'cog'], key: 3 },
+    // { to: '/menu', icon: ['fas', 'cog'], key: 3 },
+    { to: '/create-food', icon: ['fas', 'folder-plus'], key: 3 },
+
   ],
   '/eaten-foods': [
     { to: '/add-food', icon: ['fas', 'utensils'], key: 1 },
