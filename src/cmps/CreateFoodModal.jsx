@@ -64,6 +64,7 @@ const CreateFoodModal = ({
         <input
           type="text"
           className="create-food-input create-food-name-input"
+          aria-label="name"
           value={name}
           placeholder="Name"
           onChange={e => setName(e.target.value)}
@@ -72,6 +73,7 @@ const CreateFoodModal = ({
         <input
           type="text"
           className="create-food-input create-food-brand-input"
+          aria-label="brand"
           value={brand}
           placeholder="Brand"
           onChange={e => setBrand(e.target.value)}
@@ -83,6 +85,7 @@ const CreateFoodModal = ({
           max="1000"
           step="any"
           className="create-food-input create-food-calories-input"
+          aria-label="calories"
           value={calories}
           placeholder="Calories"
           onChange={e => setCalories(e.target.value)}
@@ -94,6 +97,7 @@ const CreateFoodModal = ({
           max="100"
           step="any"
           className="create-food-input create-food-proteins-input"
+          aria-label="proteins"
           value={proteins}
           placeholder="Proteins"
           onChange={e => setProteins(e.target.value)}
@@ -105,6 +109,7 @@ const CreateFoodModal = ({
           max="100"
           step="any"
           className="create-food-input create-food-fats-input"
+          aria-label="fats"
           value={fats}
           placeholder="Fats"
           onChange={e => setFats(e.target.value)}
@@ -116,6 +121,7 @@ const CreateFoodModal = ({
           max="100"
           step="any"
           className="create-food-input create-food-carbs-input"
+          aria-label="carbs"
           value={carbs}
           placeholder="Carbs"
           onChange={e => setCarbs(e.target.value)}
