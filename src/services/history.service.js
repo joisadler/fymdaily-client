@@ -18,3 +18,10 @@ export async function addEatenFood(food) {
   const updatedEntry = await httpService.post('history/food', data);
   return updatedEntry.eaten_foods;
 }
+
+export async function updateEatenFood(food) {
+  const date = new Date().toLocaleDateString('ru-RU');
+  const data = { date, food };
+  const updatedEntry = await httpService.put('history/food', data);
+  return updatedEntry.eaten_foods;
+}

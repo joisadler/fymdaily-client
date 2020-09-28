@@ -15,7 +15,7 @@
 
 // Pages
 @import "pages/AddFoodPage";
-@import "pages/EatenFoodsPage";
+@import "pages/EatenFoodPage";
 @import "pages/EntryPage";
 @import "pages/HomePage";
 @import "pages/UserSettingsPage";
@@ -34,6 +34,8 @@
 @import "components/MacrosContainer";
 @import "components/MacrosLine";
 @import "components/SettingsMenu";
-@import "components/FoodCard";
+@import "components/AddFoodCard";
 @import "components/AddFoodModal";
 @import "components/CreateFoodModal";
+@import "components/EatenFoodCard";
+@import "components/EatenFoodModal";

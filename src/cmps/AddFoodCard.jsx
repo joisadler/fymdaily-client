@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import AddFoodModal from './AddFoodModal';
 
-// eslint-disable-next-line arrow-body-style
-const FoodCard = ({ food }) => {
+const AddFoodCard = ({ food }) => {
   const {
     name,
     brand,
@@ -43,7 +42,9 @@ const FoodCard = ({ food }) => {
         {`${name}${brand !== '' ? `, ${brand}` : ''}`}
       </h2>
       <p className="add-food-card-info">
-        {`Calories: ${calories} | Proteins: ${proteins} | Fats: ${fats} | Carbs: ${carbs}`}
+        {`Calories: ${calories}`}
+        <br />
+        {`Proteins: ${proteins} | Fats: ${fats} | Carbs: ${carbs}`}
       </p>
       <AddFoodModal
         isModalOpen={isModalOpen}
@@ -53,14 +54,14 @@ const FoodCard = ({ food }) => {
         calories={calories}
         proteins={proteins}
         fats={fats}
-        carbs={fats}
+        carbs={carbs}
       />
     </li>
   );
 };
 
-FoodCard.propTypes = {
+AddFoodCard.propTypes = {
   food: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default FoodCard;
+export default AddFoodCard;

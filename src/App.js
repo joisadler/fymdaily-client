@@ -4,7 +4,7 @@ import './styles/global.scss';
 import EntryPage from './pages/EntryPage';
 import HomePage from './pages/HomePage';
 import UserSettingsPage from './pages/UserSettingsPage';
-import EatenFoodsPage from './pages/EatenFoodsPage';
+import EatenFoodPage from './pages/EatenFoodPage';
 import AddFoodPage from './pages/AddFoodPage';
 import CustomFoodsPage from './pages/CustomFoodsPage';
 import AccountSettingsPage from './pages/AccountSettingsPage';
@@ -22,7 +22,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={EntryPage} />
         <Route path="/home" component={HomePage} />
-        <Route path="/eaten-foods" component={EatenFoodsPage} />
+        <Route path="/eaten-food" component={EatenFoodPage} />
         <Route path="/add-food" component={AddFoodPage} />
         <Route path="/custom-foods" component={CustomFoodsPage} />
         <Route path="/user-settings" component={UserSettingsPage} />

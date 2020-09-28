@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import useSearchFood from '../hooks/useSearchFood';
 import { getRandomStr } from '../services/util.servise';
 import Navbar from '../cmps/Navbar';
-import FoodCard from '../cmps/FoodCard';
+import AddFoodCard from '../cmps/AddFoodCard';
 
 const AddFoodPage = () => {
   const { inputText, setInputText, search } = useSearchFood();
@@ -34,7 +34,7 @@ const AddFoodPage = () => {
           {search.loading && <p>Loading...</p>}
           {search.result && (
             search.result.map(food => (
-              <FoodCard key={getRandomStr() + food.name} food={food} />
+              <AddFoodCard key={getRandomStr() + food.name} food={food} />
             ))
           )}
         </ul>
