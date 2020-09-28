@@ -1,5 +1,5 @@
 const initialState = {
-  eatenFoods: [],
+  eatenFoods: null,
 };
 
 export default function (state = initialState, action = {}) {

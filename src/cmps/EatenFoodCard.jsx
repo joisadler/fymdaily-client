@@ -58,10 +58,10 @@ const EatenFoodCard = ({ food }) => {
         _id={_id}
         name={name}
         brand={brand}
-        calories={calories}
-        proteins={proteins}
-        fats={fats}
-        carbs={carbs}
+        calories={caloriesPer100g}
+        proteins={proteinsPer100g}
+        fats={fatsPer100g}
+        carbs={carbsPer100g}
         previousWeight={weight}
       />
     </li>

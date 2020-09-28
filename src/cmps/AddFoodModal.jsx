@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAsyncCallback } from 'react-async-hook';
+import { useDispatch } from 'react-redux';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
-import { addEatenFood } from '../services/history.service';
+import { addEatenFood } from '../actions/HistoryActions';
 
 const AddFoodModal = ({
   isModalOpen,
@@ -35,6 +36,7 @@ const AddFoodModal = ({
     setWeight(weight + 10);
   };
 
+  const dispatch = useDispatch();
   const addFood = useAsyncCallback(async () => {
     const food = {
       name,
@@ -45,16 +47,14 @@ const AddFoodModal = ({
       carbs,
       weight,
     };
-    addEatenFood(food);
+    dispatch(addEatenFood(food));
   });
 
   const onFormSubmit = (e) => {
     e.preventDefault();
     addFood.execute();
     closeModal();
-    setTimeout(() => {
-      history.push('/home');
-    }, 300);
+    history.push('/home');
   };
 
   return (

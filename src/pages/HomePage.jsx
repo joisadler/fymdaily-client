@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useAsync } from 'react-async-hook';
-import { getEatenFoods } from '../services/history.service';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { loadEatenFoods } from '../actions/HistoryActions';
 import getNumbers from '../services/calculation.service';
 import CaloriesChart from '../cmps/CaloriesChart';
 import Navbar from '../cmps/Navbar';
@@ -14,7 +13,12 @@ const HomePage = () => {
   };
 
   const user = useSelector(state => state.user.loggedInUser);
-  const eatenFoods = useAsync(getEatenFoods, [user._id]).result;
+  const eatenFoods = useSelector(state => state.history.eatenFoods);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadEatenFoods(user._id));
+  }, [user._id, dispatch]);
+
   const numbers = eatenFoods ? getNumbers(user, eatenFoods) : {};
 
   return (

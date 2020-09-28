@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { useAsync } from 'react-async-hook';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getRandomStr } from '../services/util.servise';
-import { getEatenFoods } from '../services/history.service';
+import { loadEatenFoods } from '../actions/HistoryActions';
 import Navbar from '../cmps/Navbar';
 import EatenFoodCard from '../cmps/EatenFoodCard';
 
 const EatenFoodPage = () => {
   const user = useSelector(state => state.user.loggedInUser);
-
-  const [eatenFoods, setEatenFoods] = useState([]);
-  const foodsData = useAsync(getEatenFoods, [user._id]).result;
+  const eatenFoods = useSelector(state => state.history.eatenFoods);
+  const dispatch = useDispatch();
   useEffect(() => {
-    setEatenFoods(foodsData);
-  }, [foodsData]);
+    dispatch(loadEatenFoods(user._id));
+  }, [user._id, dispatch]);
 
   const [totalData, setTotalData] = useState({
     totalCalories: 0,

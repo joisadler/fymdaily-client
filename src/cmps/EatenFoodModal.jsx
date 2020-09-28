@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useAsyncCallback } from 'react-async-hook';
+import { useDispatch } from 'react-redux';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
-import { updateEatenFood } from '../services/history.service';
+import { updateEatenFoods } from '../actions/HistoryActions';
 
 const EatenFoodModal = ({
   isModalOpen,
@@ -18,7 +18,6 @@ const EatenFoodModal = ({
   previousWeight,
 }) => {
   Modal.setAppElement('#root');
-  const history = useHistory();
   const [weight, setWeight] = useState(previousWeight);
 
   const decreaseWeight = () => {
@@ -37,6 +36,7 @@ const EatenFoodModal = ({
     setWeight(weight + 10);
   };
 
+  const dispatch = useDispatch();
   const updateFood = useAsyncCallback(async () => {
     const food = {
       _id,
@@ -48,16 +48,13 @@ const EatenFoodModal = ({
       carbs,
       weight,
     };
-    updateEatenFood(food);
+    dispatch(updateEatenFoods(food));
   });
 
   const onFormSubmit = (e) => {
     e.preventDefault();
     updateFood.execute();
     closeModal();
-    setTimeout(() => {
-      history.push('/eaten-food');
-    }, 300);
   };
 
   return (
