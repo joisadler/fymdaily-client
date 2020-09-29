@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import AddEatenFoodModal from './AddEatenFoodModal';
+import EditCustomFoodModal from './EditCustomFoodModal';
 
-const AddEatenFoodCard = ({ food }) => {
+const CustomFoodCard = ({ food }) => {
   const {
+    _id,
     name,
     brand,
   } = food;
@@ -32,36 +33,37 @@ const AddEatenFoodCard = ({ food }) => {
 
   return (
     <li
-      className="add-eaten-food-card"
+      className="custom-food-card"
       onClick={openModal}
       onKeyDown={(e) => { handleKeyDown(e); }}
       role="option"
       aria-selected="false"
     >
-      <h2 className="add-eaten-food-card-title">
+      <h2 className="custom-food-card-title">
         {`${name}${brand !== '' ? `, ${brand}` : ''}`}
       </h2>
-      <p className="add-eaten-food-card-info">
+      <p className="custom-food-card-info">
         {`Calories: ${calories}`}
         <br />
         {`Proteins: ${proteins} | Fats: ${fats} | Carbs: ${carbs}`}
       </p>
-      <AddEatenFoodModal
+      <EditCustomFoodModal
         isModalOpen={isModalOpen}
         closeModal={closeModal}
-        name={name}
-        brand={brand}
-        calories={calories}
-        proteins={proteins}
-        fats={fats}
-        carbs={carbs}
+        _id={_id}
+        prevName={name}
+        prevBrand={brand}
+        prevCalories={calories}
+        prevProteins={proteins}
+        prevFats={fats}
+        prevCarbs={carbs}
       />
     </li>
   );
 };
 
-AddEatenFoodCard.propTypes = {
+CustomFoodCard.propTypes = {
   food: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default AddEatenFoodCard;
+export default CustomFoodCard;

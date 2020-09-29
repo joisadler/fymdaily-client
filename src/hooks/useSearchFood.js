@@ -2,13 +2,19 @@ import { useState } from 'react';
 import AwesomeDebouncePromise from 'awesome-debounce-promise';
 import useConstant from 'use-constant';
 import { useAsync } from 'react-async-hook';
-import { getFoods } from '../services/food.service';
+import { useLocation } from 'react-router-dom';
+import { getFoods, getCustomFoods } from '../services/food.service';
 
 export default () => {
+  const { pathname } = useLocation();
   const [inputText, setInputText] = useState('');
 
-  const debouncedSearchStarwarsHero = useConstant(
+  const debouncedGetFoods = useConstant(
     () => AwesomeDebouncePromise(getFoods, 500),
+  );
+
+  const debouncedGetCustomFoods = useConstant(
+    () => AwesomeDebouncePromise(getCustomFoods, 0),
   );
 
   const search = useAsync(
@@ -16,7 +22,9 @@ export default () => {
       if (text.length === 0) {
         return [];
       }
-      return debouncedSearchStarwarsHero(text);
+      return pathname === '/custom-foods'
+        ? debouncedGetCustomFoods(text)
+        : debouncedGetFoods(text);
     },
     [inputText],
   );

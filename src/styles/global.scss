@@ -22,6 +22,7 @@
 @import "pages/AccountSettingsPage";
 @import "pages/PreferencesPage";
 @import "pages/StatisticsPage";
+@import "pages/CustomFoodsPage";
 
 // Components
 @import "components/Navbar";
@@ -39,3 +40,5 @@
 @import "components/CreateCustomFoodModal";
 @import "components/EatenFoodCard";
 @import "components/EditEatenFoodModal";
+@import "components/CustomFoodCard";
+@import "components/EditCustomFoodModal";

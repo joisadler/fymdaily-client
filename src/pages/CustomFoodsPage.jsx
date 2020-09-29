@@ -1,11 +1,20 @@
-import React, { useRef, useEffect } from 'react';
-import useSearchFood from '../hooks/useSearchFood';
+import React, { useState, useRef, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import { loadFoods } from '../actions/FoodActions';
 import { getRandomStr } from '../services/util.servise';
 import Navbar from '../cmps/Navbar';
-import AddEatenFoodCard from '../cmps/AddEatenFoodCard';
+import CustomFoodCard from '../cmps/CustomFoodCard';
 
-const AddEatenFoodPage = () => {
-  const { inputText, setInputText, search } = useSearchFood();
+const CustomFoodsPage = () => {
+  const foods = useSelector(state => state.food.foods);
+
+  const dispatch = useDispatch();
+  const { pathname } = useLocation();
+  const [inputText, setInputText] = useState('');
+  useEffect(() => {
+    dispatch(loadFoods(inputText, pathname));
+  }, [inputText, dispatch, pathname]);
 
   const searchInput = useRef(null);
   useEffect(() => {
@@ -20,23 +29,20 @@ const AddEatenFoodPage = () => {
     <>
       <main className="page">
         <header className="options-container">
-          <h1 className="page-title">Add eaten food</h1>
+          <h1 className="page-title">Custom Foods</h1>
           <input
             type="search"
-            className="add-eaten-food-search"
+            className="custom-foods-search"
             placeholder="Search food"
             value={inputText}
             ref={searchInput}
             onChange={(e) => { handleSearchInput(e.target); }}
           />
         </header>
-        <ul className="add-eaten-food-cards">
-          {search.loading && <p>Loading...</p>}
-          {search.result && (
-            search.result.map(food => (
-              <AddEatenFoodCard key={getRandomStr() + food.name} food={food} />
-            ))
-          )}
+        <ul className="custom-foods-cards">
+          {foods.map(food => (
+            <CustomFoodCard key={getRandomStr() + food.name} food={food} />
+          ))}
         </ul>
       </main>
       <Navbar />
@@ -44,4 +50,4 @@ const AddEatenFoodPage = () => {
   );
 };
 
-export default AddEatenFoodPage;
+export default CustomFoodsPage;

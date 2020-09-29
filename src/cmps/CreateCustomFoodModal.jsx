@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useAsyncCallback } from 'react-async-hook';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
-import { addFood } from '../services/food.service';
+import { addCustomFood } from '../services/food.service';
 
 const CreateCustomFoodModal = ({
   isModalOpen,
@@ -28,7 +28,7 @@ const CreateCustomFoodModal = ({
       fats,
       carbs,
     };
-    addFood(food);
+    addCustomFood(food);
   });
 
   const onFormSubmit = (e) => {

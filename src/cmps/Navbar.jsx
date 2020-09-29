@@ -30,6 +30,12 @@ const buttonsData = {
     { to: '/home', icon: ['fas', 'home'], key: 2 },
     { to: '/menu', icon: ['fas', 'cog'], key: 3 },
   ],
+  '/custom-foods': [
+    { to: '/create-custom-food', icon: ['fas', 'folder-plus'], key: 1 },
+    { to: '/home', icon: ['fas', 'home'], key: 2 },
+    { to: '/menu', icon: ['fas', 'cog'], key: 3 },
+
+  ],
 };
 
 const Navbar = () => {

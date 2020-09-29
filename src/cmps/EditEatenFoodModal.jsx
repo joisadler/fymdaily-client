@@ -61,7 +61,7 @@ const EditEatenFoodModal = ({
     <Modal
       isOpen={isModalOpen}
       onRequestClose={closeModal}
-      contentLabel="Add food"
+      contentLabel="Edit eaten food"
       className="edit-eaten-food-modal"
     >
       <button
