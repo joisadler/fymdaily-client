@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 import PropTypes from 'prop-types';
 import { addFood } from '../services/food.service';
 
-const CreateFoodModal = ({
+const CreateCustomFoodModal = ({
   isModalOpen,
   closeModal,
 }) => {
@@ -45,25 +45,25 @@ const CreateFoodModal = ({
       isOpen={isModalOpen}
       onRequestClose={closeModal}
       contentLabel="Create food"
-      className="create-food"
+      className="create-custom-food"
     >
       <button
-        className="create-food-close-button"
+        className="create-custom-food-close-button"
         type="button"
         onClick={e => closeModal(e)}
       >
         &times;
       </button>
-      <h2 className="create-food-header">
+      <h2 className="create-custom-food-header">
         Create new food
       </h2>
       <form
-        className="create-food-form"
+        className="create-custom-food-form"
         onSubmit={onFormSubmit}
       >
         <input
           type="text"
-          className="create-food-input create-food-name-input"
+          className="create-custom-food-input create-custom-food-name-input"
           aria-label="name"
           value={name}
           placeholder="Name"
@@ -72,7 +72,7 @@ const CreateFoodModal = ({
         />
         <input
           type="text"
-          className="create-food-input create-food-brand-input"
+          className="create-custom-food-input create-custom-food-brand-input"
           aria-label="brand"
           value={brand}
           placeholder="Brand"
@@ -84,7 +84,7 @@ const CreateFoodModal = ({
           min="0"
           max="1000"
           step="any"
-          className="create-food-input create-food-calories-input"
+          className="create-custom-food-input create-custom-food-calories-input"
           aria-label="calories"
           value={calories}
           placeholder="Calories"
@@ -96,7 +96,7 @@ const CreateFoodModal = ({
           min="0"
           max="100"
           step="any"
-          className="create-food-input create-food-proteins-input"
+          className="create-custom-food-input create-custom-food-proteins-input"
           aria-label="proteins"
           value={proteins}
           placeholder="Proteins"
@@ -108,7 +108,7 @@ const CreateFoodModal = ({
           min="0"
           max="100"
           step="any"
-          className="create-food-input create-food-fats-input"
+          className="create-custom-food-input create-custom-food-fats-input"
           aria-label="fats"
           value={fats}
           placeholder="Fats"
@@ -120,17 +120,17 @@ const CreateFoodModal = ({
           min="0"
           max="100"
           step="any"
-          className="create-food-input create-food-carbs-input"
+          className="create-custom-food-input create-custom-food-carbs-input"
           aria-label="carbs"
           value={carbs}
           placeholder="Carbs"
           onChange={e => setCarbs(e.target.value)}
           required
         />
-        <div className="create-food-submit-button-container">
+        <div className="create-custom-food-submit-button-container">
           <button
             type="submit"
-            className="create-food-submit-button"
+            className="create-custom-food-submit-button"
           >
             Create
           </button>
@@ -140,9 +140,9 @@ const CreateFoodModal = ({
   );
 };
 
-CreateFoodModal.propTypes = {
+CreateCustomFoodModal.propTypes = {
   isModalOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
 };
 
-export default CreateFoodModal;
+export default CreateCustomFoodModal;

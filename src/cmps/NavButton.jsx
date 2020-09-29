@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import MenuActions from '../actions/SettingsMenuActions';
-import CreateFoodModal from './CreateFoodModal';
+import CreateCustomFoodModal from './CreateCustomFoodModal';
 
 const NavButton = ({ to, icon }) => {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const NavButton = ({ to, icon }) => {
     if (to === '/menu') {
       return dispatch(MenuActions.toggleMenu());
     }
-    if (to === '/create-food') {
+    if (to === '/create-custom-food') {
       return openCreateFoodModal();
     }
     dispatch(MenuActions.hideMenu());
@@ -40,7 +40,7 @@ const NavButton = ({ to, icon }) => {
       >
         <FontAwesomeIcon icon={icon} className="nav-button-icon" />
       </button>
-      <CreateFoodModal
+      <CreateCustomFoodModal
         isModalOpen={isCreateFoodModalOpen}
         closeModal={closeCreateFoodModal}
       />

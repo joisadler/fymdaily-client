@@ -4,7 +4,7 @@ import NavButton from './NavButton';
 
 const defaultButtonsData = [
   { to: '/eaten-food', icon: ['fas', 'list'], key: 1 },
-  { to: '/add-food', icon: ['fas', 'utensils'], key: 2 },
+  { to: '/add-eaten-food', icon: ['fas', 'utensils'], key: 2 },
   { to: '/home', icon: ['fas', 'home'], key: 3 },
 ];
 
@@ -15,18 +15,18 @@ const buttonsData = {
   '/user-settings': defaultButtonsData,
   '/home': [
     { to: '/eaten-food', icon: ['fas', 'list'], key: 1 },
-    { to: '/add-food', icon: ['fas', 'utensils'], key: 2 },
+    { to: '/add-eaten-food', icon: ['fas', 'utensils'], key: 2 },
     { to: '/menu', icon: ['fas', 'cog'], key: 3 },
   ],
-  '/add-food': [
-    { to: '/eaten-food', icon: ['fas', 'list'], key: 1 },
+  '/add-eaten-food': [
+    // { to: '/create-custom-food', icon: ['fas', 'folder-plus'], key: 1 },
+    { to: '/custom-foods', icon: ['fas', 'folder-open'], key: 1 },
     { to: '/home', icon: ['fas', 'home'], key: 2 },
-    // { to: '/menu', icon: ['fas', 'cog'], key: 3 },
-    { to: '/create-food', icon: ['fas', 'folder-plus'], key: 3 },
+    { to: '/menu', icon: ['fas', 'cog'], key: 3 },
 
   ],
   '/eaten-food': [
-    { to: '/add-food', icon: ['fas', 'utensils'], key: 1 },
+    { to: '/add-eaten-food', icon: ['fas', 'utensils'], key: 1 },
     { to: '/home', icon: ['fas', 'home'], key: 2 },
     { to: '/menu', icon: ['fas', 'cog'], key: 3 },
   ],

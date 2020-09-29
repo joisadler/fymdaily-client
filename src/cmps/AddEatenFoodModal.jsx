@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 import PropTypes from 'prop-types';
 import { addEatenFood } from '../actions/HistoryActions';
 
-const AddFoodModal = ({
+const AddEatenFoodModal = ({
   isModalOpen,
   closeModal,
   name,
@@ -62,24 +62,24 @@ const AddFoodModal = ({
       isOpen={isModalOpen}
       onRequestClose={closeModal}
       contentLabel="Add food"
-      className="add-food-modal"
+      className="add-eaten-food-modal"
     >
       <button
-        className="add-food-modal-close-button"
+        className="add-eaten-food-modal-close-button"
         type="button"
         onClick={e => closeModal(e)}
       >
         &times;
       </button>
-      <header className="add-food-modal-header">
-        <h2 className="add-food-modal-title">
+      <header className="add-eaten-food-modal-header">
+        <h2 className="add-eaten-food-modal-title">
           {name}
         </h2>
-        <h3 className="add-food-modal-subtitle">
+        <h3 className="add-eaten-food-modal-subtitle">
           {brand}
         </h3>
       </header>
-      <div className="add-food-modal-info">
+      <div className="add-eaten-food-modal-info">
         <p>
           {`Calories: ${(calories * weight) / 100}`}
         </p>
@@ -94,26 +94,26 @@ const AddFoodModal = ({
         </p>
       </div>
       <form
-        id="add-food-modal-form"
-        className="add-food-modal-form"
+        id="add-eaten-food-modal-form"
+        className="add-eaten-food-modal-form"
         onSubmit={onFormSubmit}
       >
-        <fieldset className="add-food-modal-weight-inputs">
+        <fieldset className="add-eaten-food-modal-weight-inputs">
           <legend
-            className="add-food-modal-weight-legend"
+            className="add-eaten-food-modal-weight-legend"
           >
             Weight:
           </legend>
           <div>
             <button
               type="button"
-              className="add-food-modal-weight-dec-button"
+              className="add-eaten-food-modal-weight-dec-button"
               onClick={decreaseWeight}
             >
               -
             </button>
             <input
-              className="add-food-modal-weight-input"
+              className="add-eaten-food-modal-weight-input"
               aria-label="weight"
               type="number"
               min="0"
@@ -124,7 +124,7 @@ const AddFoodModal = ({
             />
             <button
               type="button"
-              className="add-food-modal-weight-inc-button"
+              className="add-eaten-food-modal-weight-inc-button"
               onClick={increaseWeight}
             >
               +
@@ -134,8 +134,8 @@ const AddFoodModal = ({
       </form>
       <button
         type="submit"
-        form="add-food-modal-form"
-        className="add-food-modal-submit-button"
+        form="add-eaten-food-modal-form"
+        className="add-eaten-food-modal-submit-button"
       >
         Add
       </button>
@@ -143,7 +143,7 @@ const AddFoodModal = ({
   );
 };
 
-AddFoodModal.propTypes = {
+AddEatenFoodModal.propTypes = {
   isModalOpen: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
@@ -154,4 +154,4 @@ AddFoodModal.propTypes = {
   carbs: PropTypes.number.isRequired,
 };
 
-export default AddFoodModal;
+export default AddEatenFoodModal;

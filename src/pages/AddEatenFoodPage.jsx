@@ -2,9 +2,9 @@ import React, { useRef, useEffect } from 'react';
 import useSearchFood from '../hooks/useSearchFood';
 import { getRandomStr } from '../services/util.servise';
 import Navbar from '../cmps/Navbar';
-import AddFoodCard from '../cmps/AddFoodCard';
+import AddEatenFoodCard from '../cmps/AddEatenFoodCard';
 
-const AddFoodPage = () => {
+const AddEatenFoodPage = () => {
   const { inputText, setInputText, search } = useSearchFood();
 
   const searchInput = useRef(null);
@@ -23,18 +23,18 @@ const AddFoodPage = () => {
           <h1 className="page-title">Add eaten food</h1>
           <input
             type="search"
-            className="add-food-search"
+            className="add-eaten-food-search"
             placeholder="Search food"
             value={inputText}
             ref={searchInput}
             onChange={(e) => { handleSearchInput(e.target); }}
           />
         </header>
-        <ul className="add-food-cards">
+        <ul className="add-eaten-food-cards">
           {search.loading && <p>Loading...</p>}
           {search.result && (
             search.result.map(food => (
-              <AddFoodCard key={getRandomStr() + food.name} food={food} />
+              <AddEatenFoodCard key={getRandomStr() + food.name} food={food} />
             ))
           )}
         </ul>
@@ -44,4 +44,4 @@ const AddFoodPage = () => {
   );
 };
 
-export default AddFoodPage;
+export default AddEatenFoodPage;

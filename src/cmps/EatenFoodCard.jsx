@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import EatenFoodModal from './EatenFoodModal';
+import EditEatenFoodModal from './EditEatenFoodModal';
 
 const EatenFoodCard = ({ food }) => {
   const {
@@ -52,7 +52,7 @@ const EatenFoodCard = ({ food }) => {
         <br />
         {`Proteins: ${proteins} | Fats: ${fats} | Carbs: ${carbs}`}
       </p>
-      <EatenFoodModal
+      <EditEatenFoodModal
         isModalOpen={isModalOpen}
         closeModal={closeModal}
         _id={_id}

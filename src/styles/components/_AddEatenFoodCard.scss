@@ -1,4 +1,4 @@
-.add-food-card {
+.add-eaten-food-card {
   width: 100%;
   height: calc((100% / 7) + 1px);
   min-height: calc((100% / 7) + 1px);
@@ -13,7 +13,7 @@
   }
 }
 
-.add-food-card-title {
+.add-eaten-food-card-title {
   width: 100%;
   font-size: 1.2rem;
   text-overflow: ellipsis;
@@ -21,7 +21,7 @@
   overflow: hidden;
 }
 
-.add-food-card-info {
+.add-eaten-food-card-info {
   font-size: 1rem;
   line-height: 1.3rem;
   text-overflow: ellipsis;

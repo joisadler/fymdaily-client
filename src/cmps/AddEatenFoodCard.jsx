@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import AddFoodModal from './AddFoodModal';
+import AddEatenFoodModal from './AddEatenFoodModal';
 
-const AddFoodCard = ({ food }) => {
+const AddEatenFoodCard = ({ food }) => {
   const {
     name,
     brand,
@@ -32,21 +32,21 @@ const AddFoodCard = ({ food }) => {
 
   return (
     <li
-      className="add-food-card"
+      className="add-eaten-food-card"
       onClick={openModal}
       onKeyDown={(e) => { handleKeyDown(e); }}
       role="option"
       aria-selected="false"
     >
-      <h2 className="add-food-card-title">
+      <h2 className="add-eaten-food-card-title">
         {`${name}${brand !== '' ? `, ${brand}` : ''}`}
       </h2>
-      <p className="add-food-card-info">
+      <p className="add-eaten-food-card-info">
         {`Calories: ${calories}`}
         <br />
         {`Proteins: ${proteins} | Fats: ${fats} | Carbs: ${carbs}`}
       </p>
-      <AddFoodModal
+      <AddEatenFoodModal
         isModalOpen={isModalOpen}
         closeModal={closeModal}
         name={name}
@@ -60,8 +60,8 @@ const AddFoodCard = ({ food }) => {
   );
 };
 
-AddFoodCard.propTypes = {
+AddEatenFoodCard.propTypes = {
   food: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-export default AddFoodCard;
+export default AddEatenFoodCard;

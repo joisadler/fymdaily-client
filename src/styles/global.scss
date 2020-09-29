@@ -14,7 +14,7 @@
 @import "basics/buttons";
 
 // Pages
-@import "pages/AddFoodPage";
+@import "pages/AddEatenFoodPage";
 @import "pages/EatenFoodPage";
 @import "pages/EntryPage";
 @import "pages/HomePage";
@@ -34,8 +34,8 @@
 @import "components/MacrosContainer";
 @import "components/MacrosLine";
 @import "components/SettingsMenu";
-@import "components/AddFoodCard";
-@import "components/AddFoodModal";
-@import "components/CreateFoodModal";
+@import "components/AddEatenFoodCard";
+@import "components/AddEatenFoodModal";
+@import "components/CreateCustomFoodModal";
 @import "components/EatenFoodCard";
-@import "components/EatenFoodModal";
+@import "components/EditEatenFoodModal";
