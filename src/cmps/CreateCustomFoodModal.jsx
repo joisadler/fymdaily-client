@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { useAsyncCallback } from 'react-async-hook';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
-import { addCustomFood } from '../services/food.service';
+import { addCustomFood } from '../actions/FoodActions';
 
 const CreateCustomFoodModal = ({
   isModalOpen,
   closeModal,
 }) => {
   Modal.setAppElement('#root');
-  const history = useHistory();
 
   const [name, setName] = useState('');
   const [brand, setBrand] = useState('');
@@ -19,6 +18,7 @@ const CreateCustomFoodModal = ({
   const [fats, setFats] = useState('');
   const [carbs, setCarbs] = useState('');
 
+  const dispatch = useDispatch();
   const createFood = useAsyncCallback(async () => {
     const food = {
       name,
@@ -28,16 +28,13 @@ const CreateCustomFoodModal = ({
       fats,
       carbs,
     };
-    addCustomFood(food);
+    dispatch(addCustomFood(food));
   });
 
   const onFormSubmit = (e) => {
     e.preventDefault();
     createFood.execute();
     closeModal();
-    setTimeout(() => {
-      history.push('/custom-foods');
-    }, 300);
   };
 
   return (

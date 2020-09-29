@@ -2,7 +2,7 @@ import AwesomeDebouncePromise from 'awesome-debounce-promise';
 import {
   getFoods,
   getCustomFoods,
-  addCustomFood as addFood,
+  addCustomFood as createFood,
   updateCustomFood,
 } from '../services/food.service';
 
@@ -10,6 +10,13 @@ export function setFoods(foods) {
   return {
     type: 'SET_FOODS',
     foods,
+  };
+}
+
+export function addFood(newFood) {
+  return {
+    type: 'ADD_CUSTOM_FOOD',
+    newFood,
   };
 }
 
@@ -35,11 +42,11 @@ export function loadFoods(text, pathname) {
   };
 }
 
-export function addCustomFood(newFood) {
+export function addCustomFood(foodData) {
   return async (dispatch) => {
     try {
-      const updatedFoods = await addFood(newFood);
-      dispatch(setFoods(updatedFoods));
+      const newFood = await createFood(foodData);
+      dispatch(addFood(newFood));
     } catch (err) {
       console.log('ReviewActions: err in addCustomFood', err);
     }

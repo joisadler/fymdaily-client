@@ -40,9 +40,11 @@ const CustomFoodsPage = () => {
           />
         </header>
         <ul className="custom-foods-cards">
-          {foods.map(food => (
-            <CustomFoodCard key={getRandomStr() + food.name} food={food} />
-          ))}
+          {foods
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map(food => (
+              <CustomFoodCard key={getRandomStr() + food.name} food={food} />
+            ))}
         </ul>
       </main>
       <Navbar />

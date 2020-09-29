@@ -1,13 +1,11 @@
 import httpService from './http.service';
 
 export async function getFoods(name) {
-  // if (name === '') return [];
   const foods = await httpService.get(`food?name=${name}`);
   return foods;
 }
 
 export async function getCustomFoods(name) {
-  // if (name === '') return [];
   const foods = await httpService.get(`food?name=${name}&custom=true`);
   return foods;
 }
