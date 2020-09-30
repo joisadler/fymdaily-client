@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import useAuth from '../hooks/use-auth';
+import useAuth from '../hooks/useAuth';
 import { login } from '../actions/UserActions';
 import MessageActions from '../actions/MessageActions';
 
