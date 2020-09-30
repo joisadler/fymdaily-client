@@ -1,20 +1,15 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
-import { loadFoods } from '../actions/FoodActions';
+import React, { useRef, useEffect } from 'react';
+import useFoodSearch from '../hooks/useFoodSearch';
 import { getRandomStr } from '../services/util.servise';
 import Navbar from '../cmps/Navbar';
 import CustomFoodCard from '../cmps/CustomFoodCard';
 
 const CustomFoodsPage = () => {
-  const foods = useSelector(state => state.food.foods);
-
-  const dispatch = useDispatch();
-  const { pathname } = useLocation();
-  const [inputText, setInputText] = useState('');
-  useEffect(() => {
-    dispatch(loadFoods(inputText, pathname));
-  }, [inputText, dispatch, pathname]);
+  const {
+    inputText,
+    setInputText,
+    foods,
+  } = useFoodSearch();
 
   const searchInput = useRef(null);
   useEffect(() => {

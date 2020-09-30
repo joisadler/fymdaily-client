@@ -137,7 +137,7 @@ const EditEatenFoodModal = ({
         form="edit-eaten-food-modal-form"
         className="edit-eaten-food-modal-submit-button"
       >
-        Add
+        Save
       </button>
     </Modal>
   );

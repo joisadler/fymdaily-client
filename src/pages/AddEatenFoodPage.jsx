@@ -1,11 +1,15 @@
 import React, { useRef, useEffect } from 'react';
-import useSearchFood from '../hooks/useSearchFood';
+import useFoodSearch from '../hooks/useFoodSearch';
 import { getRandomStr } from '../services/util.servise';
 import Navbar from '../cmps/Navbar';
 import AddEatenFoodCard from '../cmps/AddEatenFoodCard';
 
 const AddEatenFoodPage = () => {
-  const { inputText, setInputText, search } = useSearchFood();
+  const {
+    inputText,
+    setInputText,
+    foods,
+  } = useFoodSearch();
 
   const searchInput = useRef(null);
   useEffect(() => {
@@ -31,12 +35,11 @@ const AddEatenFoodPage = () => {
           />
         </header>
         <ul className="add-eaten-food-cards">
-          {search.loading && <p>Loading...</p>}
-          {search.result && (
-            search.result.map(food => (
+          {foods
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map(food => (
               <AddEatenFoodCard key={getRandomStr() + food.name} food={food} />
-            ))
-          )}
+            ))}
         </ul>
       </main>
       <Navbar />
