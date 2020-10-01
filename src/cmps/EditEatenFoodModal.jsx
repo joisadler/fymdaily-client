@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 import { updateEatenFoods, deleteEatenFood } from '../actions/HistoryActions';
 
 const EditEatenFoodModal = ({
@@ -65,9 +67,52 @@ const EditEatenFoodModal = ({
     closeModal();
   };
 
+  // const onRemoveFood = () => {
+  //   removeFood.execute();
+  //   closeModal();
+  // };
+
   const onRemoveFood = () => {
-    removeFood.execute();
-    closeModal();
+    confirmAlert({
+      // eslint-disable-next-line react/prop-types
+      customUI: ({ onClose }) => (
+        <div className="confirm-modal">
+          <header className="confirm-modal-header">
+            <h2 className="confirm-modal-title">
+              Are you sure you wish to delete
+            </h2>
+            <h3 className="confirm-modal-item-name">
+              <p>
+                {name}
+                <span>
+                  ?
+                </span>
+              </p>
+            </h3>
+          </header>
+          <section className="confirm-modal-options">
+            <button
+              type="button"
+              className="confirm-modal-no-button"
+              onClick={onClose}
+            >
+              Return
+            </button>
+            <button
+              type="button"
+              className="confirm-modal-yes-button"
+              onClick={() => {
+                removeFood.execute();
+                onClose();
+                closeModal();
+              }}
+            >
+              Delete
+            </button>
+          </section>
+        </div>
+      ),
+    });
   };
 
   return (

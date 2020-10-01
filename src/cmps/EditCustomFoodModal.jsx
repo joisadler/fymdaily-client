@@ -5,7 +5,7 @@ import { useAsyncCallback } from 'react-async-hook';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { confirmAlert } from 'react-confirm-alert'; // Import
+import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import { updateCustomFoods, deleteCustomFood } from '../actions/FoodActions';
 
