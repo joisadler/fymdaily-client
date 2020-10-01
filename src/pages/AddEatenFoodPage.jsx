@@ -32,6 +32,7 @@ const AddEatenFoodPage = () => {
             debounceTimeout={300}
             className="add-eaten-food-search"
             placeholder="Search food"
+            aria-label="Search food"
             value={inputText}
             inputRef={searchInput}
             onChange={(e) => { handleSearchInput(e.target); }}

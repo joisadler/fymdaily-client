@@ -39,6 +39,7 @@ const LoginForm = ({ setCurrentForm }) => {
           value={usernameOrEmail}
           onChange={e => setUsernameOrEmail(e.target.value)}
           onFocus={() => setMessage('')}
+          aria-label="Username or Email"
           placeholder="Username or Email"
         />
         <br />
@@ -48,6 +49,7 @@ const LoginForm = ({ setCurrentForm }) => {
           value={password}
           onChange={e => setPassword(e.target.value)}
           onFocus={() => setMessage('')}
+          aria-label="Password"
           placeholder="Password"
         />
       </fieldset>

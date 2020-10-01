@@ -52,6 +52,7 @@ const SignupForm = ({ setCurrentForm }) => {
           value={username}
           onChange={e => setUsername(e.target.value)}
           onFocus={() => setMessage('')}
+          aria-label="Username"
           placeholder="Username"
         />
         <input
@@ -60,6 +61,7 @@ const SignupForm = ({ setCurrentForm }) => {
           value={email}
           onChange={e => setEmail(e.target.value)}
           onFocus={() => setMessage('')}
+          aria-label="Email"
           placeholder="Email"
         />
         <input
@@ -68,6 +70,7 @@ const SignupForm = ({ setCurrentForm }) => {
           value={password}
           onChange={e => setPassword(e.target.value)}
           onFocus={() => setMessage('')}
+          aria-label="Password"
           placeholder="Password"
         />
         <input
@@ -76,6 +79,7 @@ const SignupForm = ({ setCurrentForm }) => {
           value={confirmPassword}
           onChange={e => setConfirmPassword(e.target.value)}
           onFocus={() => setMessage('')}
+          aria-label="Confirm Password"
           placeholder="Confirm Password"
         />
       </fieldset>

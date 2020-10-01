@@ -30,6 +30,7 @@ const CustomFoodsPage = () => {
             type="search"
             debounceTimeout={300}
             className="custom-foods-search"
+            aria-label="Search food"
             placeholder="Search food"
             value={inputText}
             inputRef={searchInput}
