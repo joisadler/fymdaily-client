@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import { DebounceInput } from 'react-debounce-input';
 import useFoodSearch from '../hooks/useFoodSearch';
 import { getRandomStr } from '../services/util.servise';
 import Navbar from '../cmps/Navbar';
@@ -25,12 +26,14 @@ const AddEatenFoodPage = () => {
       <main className="page">
         <header className="options-container">
           <h1 className="page-title">Add eaten food</h1>
-          <input
+          <DebounceInput
+            minLength={0}
             type="search"
+            debounceTimeout={300}
             className="add-eaten-food-search"
             placeholder="Search food"
             value={inputText}
-            ref={searchInput}
+            inputRef={searchInput}
             onChange={(e) => { handleSearchInput(e.target); }}
           />
         </header>

@@ -1,4 +1,3 @@
-import AwesomeDebouncePromise from 'awesome-debounce-promise';
 import {
   getFoods,
   getCustomFoods,
@@ -38,11 +37,9 @@ export function updateFood(updatedFood) {
 export function loadFoods(text, pathname) {
   return async (dispatch) => {
     try {
-      const getFoodsDebounced = AwesomeDebouncePromise(getFoods, 500);
-      const getCustomFoodsDebounced = AwesomeDebouncePromise(getCustomFoods, 0);
       const foods = pathname === '/custom-foods'
-        ? await getCustomFoodsDebounced(text)
-        : await getFoodsDebounced(text);
+        ? await getCustomFoods(text)
+        : await getFoods(text);
       dispatch(_setFoods(foods));
     } catch (err) {
       console.log('FoodActions: err in loadCustomFoods', err);
