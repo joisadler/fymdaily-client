@@ -46,16 +46,18 @@ const AddEatenFoodCard = ({ food }) => {
         <br />
         {`Proteins: ${proteins} | Fats: ${fats} | Carbs: ${carbs}`}
       </p>
-      <AddEatenFoodModal
-        isModalOpen={isModalOpen}
-        closeModal={closeModal}
-        name={name}
-        brand={brand}
-        calories={calories}
-        proteins={proteins}
-        fats={fats}
-        carbs={carbs}
-      />
+      {isModalOpen && (
+        <AddEatenFoodModal
+          isModalOpen={isModalOpen}
+          closeModal={closeModal}
+          name={name}
+          brand={brand}
+          calories={calories}
+          proteins={proteins}
+          fats={fats}
+          carbs={carbs}
+        />
+      )}
     </li>
   );
 };

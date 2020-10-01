@@ -47,17 +47,19 @@ const CustomFoodCard = ({ food }) => {
         <br />
         {`Proteins: ${proteins} | Fats: ${fats} | Carbs: ${carbs}`}
       </p>
-      <EditCustomFoodModal
-        isModalOpen={isModalOpen}
-        closeModal={closeModal}
-        _id={_id}
-        prevName={name}
-        prevBrand={brand}
-        prevCalories={calories}
-        prevProteins={proteins}
-        prevFats={fats}
-        prevCarbs={carbs}
-      />
+      {isModalOpen && (
+        <EditCustomFoodModal
+          isModalOpen={isModalOpen}
+          closeModal={closeModal}
+          _id={_id}
+          prevName={name}
+          prevBrand={brand}
+          prevCalories={calories}
+          prevProteins={proteins}
+          prevFats={fats}
+          prevCarbs={carbs}
+        />
+      )}
     </li>
   );
 };

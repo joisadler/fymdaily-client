@@ -40,10 +40,12 @@ const NavButton = ({ to, icon }) => {
       >
         <FontAwesomeIcon icon={icon} className="nav-button-icon" />
       </button>
-      <CreateCustomFoodModal
-        isModalOpen={isCreateFoodModalOpen}
-        closeModal={closeCreateFoodModal}
-      />
+      {isCreateFoodModalOpen && (
+        <CreateCustomFoodModal
+          isModalOpen={isCreateFoodModalOpen}
+          closeModal={closeCreateFoodModal}
+        />
+      )}
     </>
   );
 };

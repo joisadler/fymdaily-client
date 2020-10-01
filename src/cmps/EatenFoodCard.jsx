@@ -58,18 +58,20 @@ const EatenFoodCard = ({ food }) => {
         <br />
         {`Proteins: ${proteins} | Fats: ${fats} | Carbs: ${carbs}`}
       </p>
-      <EditEatenFoodModal
-        isModalOpen={isModalOpen}
-        closeModal={closeModal}
-        _id={_id}
-        name={name}
-        brand={brand}
-        calories={caloriesPer100g}
-        proteins={proteinsPer100g}
-        fats={fatsPer100g}
-        carbs={carbsPer100g}
-        previousWeight={weight}
-      />
+      {isModalOpen && (
+        <EditEatenFoodModal
+          isModalOpen={isModalOpen}
+          closeModal={closeModal}
+          _id={_id}
+          name={name}
+          brand={brand}
+          calories={caloriesPer100g}
+          proteins={proteinsPer100g}
+          fats={fatsPer100g}
+          carbs={carbsPer100g}
+          previousWeight={weight}
+        />
+      )}
     </li>
   );
 };
