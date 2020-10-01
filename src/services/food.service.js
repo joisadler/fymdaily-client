@@ -19,3 +19,8 @@ export async function updateCustomFood(foodData) {
   const food = await httpService.put('food', foodData);
   return food;
 }
+
+export async function deleteCustomFood(foodId) {
+  const food = await httpService.delete(`food/${foodId}`);
+  return food;
+}

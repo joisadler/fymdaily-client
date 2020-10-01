@@ -17,6 +17,11 @@ export default function (state = initialState, action = {}) {
             : food
         )),
       };
+      case 'DELETE_CUSTOM_FOOD':
+      return {
+        ...state,
+        foods: state.foods.filter(food => food._id !== action.foodId),
+      };
     default:
       return state;
   }

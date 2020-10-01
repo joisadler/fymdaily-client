@@ -4,19 +4,27 @@ import {
   getCustomFoods,
   addCustomFood as createFood,
   updateCustomFood,
+  deleteCustomFood as deleteFood,
 } from '../services/food.service';
 
-export function setFoods(foods) {
+function _setFoods(foods) {
   return {
     type: 'SET_FOODS',
     foods,
   };
 }
 
-export function addFood(newFood) {
+function _addFood(newFood) {
   return {
     type: 'ADD_CUSTOM_FOOD',
     newFood,
+  };
+}
+
+function _deleteFood(foodId) {
+  return {
+    type: 'DELETE_CUSTOM_FOOD',
+    foodId,
   };
 }
 
@@ -35,7 +43,7 @@ export function loadFoods(text, pathname) {
       const foods = pathname === '/custom-foods'
         ? await getCustomFoodsDebounced(text)
         : await getFoodsDebounced(text);
-      dispatch(setFoods(foods));
+      dispatch(_setFoods(foods));
     } catch (err) {
       console.log('FoodActions: err in loadCustomFoods', err);
     }
@@ -46,7 +54,7 @@ export function addCustomFood(foodData) {
   return async (dispatch) => {
     try {
       const newFood = await createFood(foodData);
-      dispatch(addFood(newFood));
+      dispatch(_addFood(newFood));
     } catch (err) {
       console.log('FoodActions: err in addCustomFood', err);
     }
@@ -60,6 +68,17 @@ export function updateCustomFoods(foodData) {
       dispatch(updateFood(updatedFood));
     } catch (err) {
       console.log('FoodActions: err in updateCustomFoods', err);
+    }
+  };
+}
+
+export function deleteCustomFood(foodId) {
+  return async (dispatch) => {
+    try {
+      await deleteFood(foodId);
+      dispatch(_deleteFood(foodId));
+    } catch (err) {
+      console.log('FoodActions: err in deleteCustomFood', err);
     }
   };
 }

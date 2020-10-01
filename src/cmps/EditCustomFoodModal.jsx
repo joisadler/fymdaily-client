@@ -1,9 +1,13 @@
+/* eslint-disable react/jsx-indent-props */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAsyncCallback } from 'react-async-hook';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
-import { updateCustomFoods } from '../actions/FoodActions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import { updateCustomFoods, deleteCustomFood } from '../actions/FoodActions';
 
 const EditCustomFoodModal = ({
   isModalOpen,
@@ -38,6 +42,53 @@ const EditCustomFoodModal = ({
     };
     dispatch(updateCustomFoods(food));
   });
+
+  const removeFood = useAsyncCallback(async () => {
+    dispatch(deleteCustomFood(_id));
+  });
+
+  const onRemoveFood = () => {
+    confirmAlert({
+      // eslint-disable-next-line react/prop-types
+      customUI: ({ onClose }) => (
+        <div className="confirm-modal">
+          <header className="confirm-modal-header">
+            <h2 className="confirm-modal-title">
+              Are you sure you wish to delete
+            </h2>
+            <h3 className="confirm-modal-item-name">
+              <p>
+                {name}
+                <span>
+                  ?
+                </span>
+              </p>
+            </h3>
+          </header>
+          <section className="confirm-modal-options">
+            <button
+              type="button"
+              className="confirm-modal-no-button"
+              onClick={onClose}
+            >
+              Return
+            </button>
+            <button
+              type="button"
+              className="confirm-modal-yes-button"
+              onClick={() => {
+                removeFood.execute();
+                onClose();
+                closeModal();
+              }}
+            >
+              Delete
+            </button>
+          </section>
+        </div>
+      ),
+    });
+  };
 
   const onFormSubmit = (e) => {
     e.preventDefault();
@@ -138,6 +189,17 @@ const EditCustomFoodModal = ({
             className="edit-custom-food-submit-button"
           >
             Save
+          </button>
+          <button
+            type="button"
+            aria-label="Delete eaten food"
+            className="edit-eaten-food-modal-delete-button"
+            onClick={onRemoveFood}
+          >
+            <FontAwesomeIcon
+              icon={['fas', 'trash']}
+              className="edit-eaten-food-delete-button-icon"
+            />
           </button>
         </div>
       </form>
