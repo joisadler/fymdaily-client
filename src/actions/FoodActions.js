@@ -37,7 +37,7 @@ export function loadFoods(text, pathname) {
         : await getFoodsDebounced(text);
       dispatch(setFoods(foods));
     } catch (err) {
-      console.log('ReviewActions: err in loadCustomFoods', err);
+      console.log('FoodActions: err in loadCustomFoods', err);
     }
   };
 }
@@ -48,7 +48,7 @@ export function addCustomFood(foodData) {
       const newFood = await createFood(foodData);
       dispatch(addFood(newFood));
     } catch (err) {
-      console.log('ReviewActions: err in addCustomFood', err);
+      console.log('FoodActions: err in addCustomFood', err);
     }
   };
 }
@@ -59,7 +59,7 @@ export function updateCustomFoods(foodData) {
       const updatedFood = await updateCustomFood(foodData);
       dispatch(updateFood(updatedFood));
     } catch (err) {
-      console.log('ReviewActions: err in updateCustomFoods', err);
+      console.log('FoodActions: err in updateCustomFoods', err);
     }
   };
 }

@@ -25,3 +25,10 @@ export async function updateEatenFood(food) {
   const updatedEntry = await httpService.put('history/food', data);
   return updatedEntry.eaten_foods;
 }
+
+export async function deleteEatenFood(food) {
+  const date = new Date().toLocaleDateString('ru-RU');
+  const data = { date, food };
+  const updatedEntry = await httpService.delete('history/food', data);
+  return updatedEntry.eaten_foods;
+}

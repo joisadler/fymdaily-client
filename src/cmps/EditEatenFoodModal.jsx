@@ -3,7 +3,8 @@ import { useAsyncCallback } from 'react-async-hook';
 import { useDispatch } from 'react-redux';
 import Modal from 'react-modal';
 import PropTypes from 'prop-types';
-import { updateEatenFoods } from '../actions/HistoryActions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { updateEatenFoods, deleteEatenFood } from '../actions/HistoryActions';
 
 const EditEatenFoodModal = ({
   isModalOpen,
@@ -51,9 +52,21 @@ const EditEatenFoodModal = ({
     dispatch(updateEatenFoods(food));
   });
 
+  const removeFood = useAsyncCallback(async () => {
+    const food = {
+      _id,
+    };
+    dispatch(deleteEatenFood(food));
+  });
+
   const onFormSubmit = (e) => {
     e.preventDefault();
     updateFood.execute();
+    closeModal();
+  };
+
+  const onRemoveFood = () => {
+    removeFood.execute();
     closeModal();
   };
 
@@ -132,13 +145,26 @@ const EditEatenFoodModal = ({
           </div>
         </fieldset>
       </form>
-      <button
-        type="submit"
-        form="edit-eaten-food-modal-form"
-        className="edit-eaten-food-modal-submit-button"
-      >
-        Save
-      </button>
+      <div className="edit-eaten-food-modal-options-container">
+        <button
+          type="submit"
+          form="edit-eaten-food-modal-form"
+          className="edit-eaten-food-modal-submit-button"
+        >
+          Save
+        </button>
+        <button
+          type="button"
+          aria-label="Delete eaten food"
+          className="edit-eaten-food-modal-delete-button"
+          onClick={onRemoveFood}
+        >
+          <FontAwesomeIcon
+            icon={['fas', 'trash']}
+            className="edit-eaten-food-delete-button-icon"
+          />
+        </button>
+      </div>
     </Modal>
   );
 };

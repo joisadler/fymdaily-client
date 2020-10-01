@@ -88,11 +88,10 @@
     &:focus {
       outline: 1px solid green;
     }
-
   }
 
   &-weight-inc-button,
-  &-weight-dec-button {
+  &-weight-dec-button, {
     width: 2.7rem;
     height: 2.7rem;
     padding: 0;
@@ -105,13 +104,42 @@
     }
   }
 
+  &-options-container {
+    height: 2.7rem;
+    display: flex;
+    align-items: center;
+  }
+
   &-submit-button {
-    height: 3rem;
-    width: 11.4rem;
+    height: 2.7rem;
+    // width: 11.4rem;
+    width: 8.7rem;
     border: 1px solid black;
     font-size: 1.3rem;
     color: white;
     background-color: green;
     cursor: pointer;
+  }
+
+  &-delete-button {
+    width: 2.7rem;
+    height: 2.7rem;
+    padding: 0;
+    border: none;
+    background-color: #fff;
+    // background-image: url(/images/fats.png);
+    // background-size: contain;
+    // background-repeat: no-repeat;
+    // background-position: 50%;
+    cursor: pointer;
+
+    &-icon {
+      width: 50% !important;
+      height: 50% !important;
+    }
+
+    &:focus {
+      outline: 1px solid green;
+    }
   }
 }

@@ -1,4 +1,9 @@
-import { getEatenFoods, addEatenFood as addFood, updateEatenFood } from '../services/history.service';
+import {
+  getEatenFoods,
+  addEatenFood as addFood,
+  updateEatenFood,
+  deleteEatenFood as deleteFood,
+} from '../services/history.service';
 
 export function setEatenFoods(eatenFoods) {
   return {
@@ -13,7 +18,7 @@ export function loadEatenFoods(userId) {
       const eatenFoods = await getEatenFoods(userId);
       dispatch(setEatenFoods(eatenFoods));
     } catch (err) {
-      console.log('ReviewActions: err in loadEatenFoods', err);
+      console.log('HistoryActions: err in loadEatenFoods', err);
     }
   };
 }
@@ -24,7 +29,7 @@ export function addEatenFood(newFood) {
       const updatedFoods = await addFood(newFood);
       dispatch(setEatenFoods(updatedFoods));
     } catch (err) {
-      console.log('ReviewActions: err in addEatenFood', err);
+      console.log('HistoryActions: err in addEatenFood', err);
     }
   };
 }
@@ -35,7 +40,18 @@ export function updateEatenFoods(updatedFood) {
       const updatedFoods = await updateEatenFood(updatedFood);
       dispatch(setEatenFoods(updatedFoods));
     } catch (err) {
-      console.log('ReviewActions: err in updateEatenFoods', err);
+      console.log('HistoryActions: err in updateEatenFoods', err);
+    }
+  };
+}
+
+export function deleteEatenFood(food) {
+  return async (dispatch) => {
+    try {
+      const updatedFoods = await deleteFood(food);
+      dispatch(setEatenFoods(updatedFoods));
+    } catch (err) {
+      console.log('HistoryActions: err in deleteEatenFood', err);
     }
   };
 }
