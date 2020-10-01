@@ -41,7 +41,10 @@ const AddEatenFoodPage = () => {
           {foods
             .sort((a, b) => a.name.localeCompare(b.name))
             .map(food => (
-              <AddEatenFoodCard key={getRandomStr() + food.name} food={food} />
+              <AddEatenFoodCard
+                key={food._id ? food._id : getRandomStr() + food.name}
+                food={food}
+              />
             ))}
         </ul>
       </main>

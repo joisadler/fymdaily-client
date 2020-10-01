@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { DebounceInput } from 'react-debounce-input';
 import useFoodSearch from '../hooks/useFoodSearch';
-import { getRandomStr } from '../services/util.servise';
 import Navbar from '../cmps/Navbar';
 import CustomFoodCard from '../cmps/CustomFoodCard';
 
@@ -41,7 +40,7 @@ const CustomFoodsPage = () => {
           {foods
             .sort((a, b) => a.name.localeCompare(b.name))
             .map(food => (
-              <CustomFoodCard key={getRandomStr() + food.name} food={food} />
+              <CustomFoodCard key={food._id} food={food} />
             ))}
         </ul>
       </main>
