@@ -45,7 +45,13 @@ const EatenFoodCard = ({ food }) => {
       aria-selected="false"
     >
       <h2 className="eaten-food-card-title">
-        {`${name}${brand !== '' ? `, ${brand}` : ''}, ${weight}g`}
+        <bdi>
+          {name}
+        </bdi>
+        <bdi>
+          {`${brand !== '' ? `, ${brand}` : ''}, `}
+        </bdi>
+        {`${weight}g`}
       </h2>
       <p className="eaten-food-card-info">
         {`Calories: ${calories}`}
