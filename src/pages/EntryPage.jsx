@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import LoginForm from '../cmps/LoginForm';
-import SignupForm from '../cmps/SignupForm';
-import Footer from '../cmps/Footer';
+import LoginForm from '../components/LoginForm';
+import SignupForm from '../components/SignupForm';
+import Footer from '../components/Footer';
 
 export default () => {
   const [currentForm, setCurrentForm] = useState('login');

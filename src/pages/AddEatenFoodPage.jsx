@@ -2,8 +2,8 @@ import React, { useRef, useEffect } from 'react';
 import { DebounceInput } from 'react-debounce-input';
 import useFoodSearch from '../hooks/useFoodSearch';
 import { getRandomStr } from '../services/util.servise';
-import Navbar from '../cmps/Navbar';
-import AddEatenFoodCard from '../cmps/AddEatenFoodCard';
+import Navbar from '../components/Navbar';
+import AddEatenFoodCard from '../components/AddEatenFoodCard';
 
 const AddEatenFoodPage = () => {
   const {

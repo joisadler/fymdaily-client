@@ -1,6 +1,6 @@
 import React from 'react';
 // import { useSelector } from 'react-redux';
-import Navbar from '../cmps/Navbar';
+import Navbar from '../components/Navbar';
 
 const UserSettingsPage = () => {
   // const user = useSelector(state => state.user.loggedInUser);

@@ -1,8 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import { DebounceInput } from 'react-debounce-input';
 import useFoodSearch from '../hooks/useFoodSearch';
-import Navbar from '../cmps/Navbar';
-import CustomFoodCard from '../cmps/CustomFoodCard';
+import Navbar from '../components/Navbar';
+import CustomFoodCard from '../components/CustomFoodCard';
 
 const CustomFoodsPage = () => {
   const {

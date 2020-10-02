@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getRandomStr } from '../services/util.servise';
 import { loadEatenFoods } from '../actions/HistoryActions';
-import Navbar from '../cmps/Navbar';
-import EatenFoodCard from '../cmps/EatenFoodCard';
+import Navbar from '../components/Navbar';
+import EatenFoodCard from '../components/EatenFoodCard';
 
 const EatenFoodPage = () => {
   const user = useSelector(state => state.user.loggedInUser);

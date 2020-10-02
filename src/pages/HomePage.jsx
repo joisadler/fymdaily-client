@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadEatenFoods } from '../actions/HistoryActions';
 import getNumbers from '../services/calculation.service';
-import CaloriesChart from '../cmps/CaloriesChart';
-import Navbar from '../cmps/Navbar';
-import MacrosContainer from '../cmps/MacrosContainer';
+import CaloriesChart from '../components/CaloriesChart';
+import Navbar from '../components/Navbar';
+import MacrosContainer from '../components/MacrosContainer';
 
 const HomePage = () => {
   const [isAlternateContentShown, setIsAlternateContentShown] = useState(false);

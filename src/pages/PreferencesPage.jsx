@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../cmps/Navbar';
+import Navbar from '../components/Navbar';
 
 const PreferencesPage = () => {
   return (

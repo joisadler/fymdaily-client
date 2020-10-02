@@ -10,7 +10,7 @@ import CustomFoodsPage from './pages/CustomFoodsPage';
 import AccountSettingsPage from './pages/AccountSettingsPage';
 import PreferencesPage from './pages/PreferencesPage';
 import StatisticsPage from './pages/StatisticsPage';
-import SettingsMenu from './cmps/SettingsMenu';
+import SettingsMenu from './components/SettingsMenu';
 
 function App() {
   const location = useLocation();
