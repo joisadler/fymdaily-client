@@ -1,16 +1,16 @@
 import React from 'react';
 import { Switch, Route, useLocation } from 'react-router-dom';
+import EntryPage from './components/Entry/EntryPage';
+import HomePage from './components/Home/HomePage';
+import UserSettingsPage from './components/Settings/UserSettingsPage';
+import EatenFoodPage from './components/EatenFood/EatenFoodPage';
+import AddEatenFoodPage from './components/AddEatenFood/AddEatenFoodPage';
+import CustomFoodPage from './components/CustomFood/CustomFoodPage';
+import AccountSettingsPage from './components/Settings/AccountSettingsPage';
+import PreferencesPage from './components/Settings/PreferencesPage';
+import StatisticsPage from './components/Settings/StatisticsPage';
+import SettingsMenu from './components/Settings/SettingsMenu';
 import './styles/global.scss';
-import EntryPage from './cmps/Entry/EntryPage';
-import HomePage from './cmps/Home/HomePage';
-import UserSettingsPage from './cmps/Settings/UserSettingsPage';
-import EatenFoodPage from './cmps/EatenFood/EatenFoodPage';
-import AddEatenFoodPage from './cmps/AddEatenFood/AddEatenFoodPage';
-import CustomFoodPage from './cmps/CustomFood/CustomFoodPage';
-import AccountSettingsPage from './cmps/Settings/AccountSettingsPage';
-import PreferencesPage from './cmps/Settings/PreferencesPage';
-import StatisticsPage from './cmps/Settings/StatisticsPage';
-import SettingsMenu from './cmps/Settings/SettingsMenu';
 
 function App() {
   const location = useLocation();
