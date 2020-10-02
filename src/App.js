@@ -1,16 +1,16 @@
 import React from 'react';
 import { Switch, Route, useLocation } from 'react-router-dom';
 import './styles/global.scss';
-import EntryPage from './pages/EntryPage';
-import HomePage from './pages/HomePage';
-import UserSettingsPage from './pages/UserSettingsPage';
-import EatenFoodPage from './pages/EatenFoodPage';
-import AddEatenFoodPage from './pages/AddEatenFoodPage';
-import CustomFoodsPage from './pages/CustomFoodsPage';
-import AccountSettingsPage from './pages/AccountSettingsPage';
-import PreferencesPage from './pages/PreferencesPage';
-import StatisticsPage from './pages/StatisticsPage';
-import SettingsMenu from './components/SettingsMenu';
+import EntryPage from './cmps/Entry/EntryPage';
+import HomePage from './cmps/Home/HomePage';
+import UserSettingsPage from './cmps/Settings/UserSettingsPage';
+import EatenFoodPage from './cmps/EatenFood/EatenFoodPage';
+import AddEatenFoodPage from './cmps/AddEatenFood/AddEatenFoodPage';
+import CustomFoodPage from './cmps/CustomFood/CustomFoodPage';
+import AccountSettingsPage from './cmps/Settings/AccountSettingsPage';
+import PreferencesPage from './cmps/Settings/PreferencesPage';
+import StatisticsPage from './cmps/Settings/StatisticsPage';
+import SettingsMenu from './cmps/Settings/SettingsMenu';
 
 function App() {
   const location = useLocation();
@@ -24,7 +24,7 @@ function App() {
         <Route path="/home" component={HomePage} />
         <Route path="/eaten-food" component={EatenFoodPage} />
         <Route path="/add-eaten-food" component={AddEatenFoodPage} />
-        <Route path="/custom-foods" component={CustomFoodsPage} />
+        <Route path="/custom-foods" component={CustomFoodPage} />
         <Route path="/user-settings" component={UserSettingsPage} />
         <Route path="/account-settings" component={AccountSettingsPage} />
         <Route path="/preferences" component={PreferencesPage} />
