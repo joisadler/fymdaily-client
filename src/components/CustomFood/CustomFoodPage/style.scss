@@ -1,26 +1,28 @@
-.custom-foods-cards {
-  width: 100%;
-  display: flex;
-  flex-flow: column nowrap;
-  flex: 1;
-  overflow-x: hidden;
-  overflow-y: auto;
+.custom-foods {
+  &-cards {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  &-search {
+    width: 100%;
+    height: $input-height;
+    border: 1px solid black;
+    border-radius: 0;
+    padding: $sm-distance;
+    font-size: $sm-text;
+  
+    &:focus {
+      outline: 1px solid green;
+    }
+  }
 }
 
 .options-container {
   width: 100%;
-  margin-block-end: 1rem;
-}
-
-.custom-foods-search {
-  width: 100%;
-  height: 2.7rem;
-  border: 1px solid black;
-  border-radius: 0;
-  padding: 0.5rem;
-  font-size: 1.2rem;
-
-  &:focus {
-    outline: 1px solid green;
-  }
+  margin-block-end: $sm-distance;
 }

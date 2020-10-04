@@ -23,14 +23,14 @@
   }
 
   &-title {
-    margin-inline-end: 0.5rem;
-    font-size: 2rem;
+    margin-inline-end: $sm-distance;
+    font-size: $l-text;
     font-weight: 700;
   }
 
   &-logout-button {
-    width: 2.7rem;
-    height: 2.7rem;
+    width: $input-height;
+    height: $input-height;
     border: none;
     background-color: white;
     background-image: url(/images/logout.png);
@@ -54,7 +54,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;
+    font-size: $m-text;
     color: #000;
     text-transform: uppercase;
     text-decoration: none;

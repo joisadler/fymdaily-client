@@ -16,8 +16,8 @@
   height: 12vmin;
   line-height: 12vmin;
   font-size: 16vmin;
-  margin-block-start: 1rem;
-  margin-block-end: 1rem;
+  margin-block-start: $m-distance;
+  margin-block-end: $m-distance;
 
   @media (min-width: $tablet) {
     font-size: 10vmin;
@@ -43,8 +43,8 @@
 }
 
 .alternative-calories-chart-content-number {
-  margin-block-start: 2rem;
-  margin-block-end: 2rem;
+  margin-block-start: $l-distance;
+  margin-block-end: $l-distance;
   font-size: 9vmin;
 
   @media (min-width: $tablet) {

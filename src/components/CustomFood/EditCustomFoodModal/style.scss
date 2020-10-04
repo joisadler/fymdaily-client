@@ -4,8 +4,8 @@
   left: 50%;
   width: 80vw;
   height: 80vw;
-  padding-inline-start: 1rem;
-  padding-inline-end: 1rem;
+  padding-inline-start: $m-distance;
+  padding-inline-end: $m-distance;
   border: 1px solid black;
   border-radius: 0;
   display: flex;
@@ -26,8 +26,8 @@
     z-index: 1;
     top: 0;
     right: 0;
-    width: 2.7rem;
-    height: 2.7rem;
+    width: $input-height;
+    height: $input-height;
     background-color: #fff;
     border: none;
 
@@ -37,8 +37,8 @@
   }
 
   &-header {
-    margin-block-end: 0.5rem;
-    font-size: 1rem;
+    margin-block-end: $sm-distance;
+    font-size: $sm-text;
     font-weight: 700;
     text-align: center;
   }
@@ -52,8 +52,9 @@
 
   &-input {
     width: 100%;
-    height: 2.7rem;
-    margin-block-end: 1rem;
+    height: $input-height;
+    margin-block-end: $m-distance;
+    font-size: $sm-text;
 
     &:focus {
       outline: 1px solid green;
@@ -73,10 +74,10 @@
   }
 
   &-submit-button {
-    height: 3rem;
-    width: 11.4rem;
+    height: $xl-distance;
+    width: calc(100% - #{$input-height});
     border: 1px solid black;
-    font-size: 1.3rem;
+    font-size: $m-text;
     color: white;
     background-color: green;
     cursor: pointer;

@@ -4,8 +4,8 @@
   left: 50%;
   width: 50vw;
   height: 50vw;
-  padding-inline-start: 1rem;
-  padding-inline-end: 1rem;
+  padding-inline-start: $m-distance;
+  padding-inline-end: $m-distance;
   border: 1px solid black;
   border-radius: 0;
   display: flex;
@@ -22,13 +22,13 @@
   // }
 
   &-header {
-    margin-block-end: 0.5rem;
-    font-size: 1rem;
+    margin-block-end: $sm-distance;
+    font-size: $sm-text;
     text-align: center;
   }
 
   &-title {
-    margin-block-end: 0.5rem;
+    margin-block-end: $sm-distance;
     font-weight: 400;
   }
 
@@ -43,15 +43,15 @@
   }
 
   &-options {
-    height: 2.7rem;
+    height: $input-height;
   }
 
   &-no-button {
     width: 5rem;
     height: 100%;
-    margin-inline-end: 0.5rem;
+    margin-inline-end: $sm-distance;
     border: 1px solid black;
-    font-size: 1.3rem;
+    font-size: $m-text;
     color: white;
     background-color: green;
     cursor: pointer;
@@ -60,9 +60,9 @@
   &-yes-button {
     width: 5rem;
     height: 100%;
-    margin-inline-end: 0.5rem;
+    margin-inline-end: $sm-distance;
     border: 1px solid black;
-    font-size: 1.3rem;
+    font-size: $m-text;
     color: white;
     background-color: red;
     cursor: pointer;

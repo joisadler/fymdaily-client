@@ -1,18 +1,18 @@
 .app-description {
-  font-size: 1.5rem;
-  margin-block-end: 2rem;
+  font-size: $m-text * 1.2;
+  margin-block-end: $m-distance;
 
   em {
     font-weight: 700;
   }
 
-  @media (min-width: $tablet) {
-    font-size: 3rem;
-  }
+  // @media (min-width: $tablet) {
+  //   font-size: 3rem;
+  // }
 
-  @media (min-width: $desktop) {
-    font-size: 2.2rem;
-  }
+  // @media (min-width: $desktop) {
+  //   font-size: 1.6rem;
+  // }
 }
 
 .form-container {

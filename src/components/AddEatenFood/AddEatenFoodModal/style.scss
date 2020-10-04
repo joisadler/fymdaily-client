@@ -4,8 +4,8 @@
   left: 50%;
   width: 70vw;
   height: 70vw;
-  padding-inline-start: 1rem;
-  padding-inline-end: 2rem;
+  padding-inline-start: $m-distance;
+  padding-inline-end: $input-height;
   border: 1px solid black;
   border-radius: 0;
   display: flex;
@@ -17,17 +17,13 @@
   outline: none;
   transform: translate(-50%, -50%);
 
-  // @media (min-width: desktop) {
-
-  // }
-
   &-close-button {
     position: absolute;
     z-index: 1;
     top: 0;
     right: 0;
-    width: 2.7rem;
-    height: 2.7rem;
+    width: $input-height;
+    height: $input-height;
     background-color: #fff;
     border: none;
 
@@ -37,14 +33,14 @@
   }
 
   &-title {
-    margin-block-end: 0.5rem;
-    font-size: 1rem;
+    margin-block-end: $sm-distance;
+    font-size: $sm-text;
     font-weight: 700;
     text-align: center;
   }
 
   &-subtitle {
-    font-size: 1rem;
+    font-size: $sm-text;
     font-weight: 400;
     text-align: center;
   }
@@ -55,7 +51,8 @@
 
     p {
       width: 50%;
-      margin-block-end: 0.5rem;
+      margin-block-end: $sm-distance;
+      font-size: $sm-text;
       text-align: center;
     }
   }
@@ -74,16 +71,16 @@
   }
 
   &-weight-legend {
-    margin-block-end: 0.5rem;
-    font-size: 1rem;
+    margin-block-end: $sm-distance;
+    font-size: $sm-text;
     text-align: center;
   }
 
   &-weight-input {
     width: 5rem;
-    height: 2.7rem;
-    margin-inline-start: 0.5rem;
-    margin-inline-end: 0.5rem;
+    height: $input-height;
+    margin-inline-start: $sm-distance;
+    margin-inline-end: $sm-distance;
 
     &:focus {
       outline: 1px solid green;
@@ -93,8 +90,8 @@
 
   &-weight-inc-button,
   &-weight-dec-button {
-    width: 2.7rem;
-    height: 2.7rem;
+    width: $input-height;
+    height: $input-height;
     padding: 0;
     border: 1px solid black;
     background-color: #fff;
@@ -106,10 +103,10 @@
   }
 
   &-submit-button {
-    height: 3rem;
-    width: 11.4rem;
+    height: $xl-distance;
+    width: calc(5rem + #{$sm-distance * 2} + #{$input-height * 2});
     border: 1px solid black;
-    font-size: 1.3rem;
+    font-size: $m-text;
     color: white;
     background-color: green;
     cursor: pointer;

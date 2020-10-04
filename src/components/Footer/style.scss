@@ -6,30 +6,28 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  font-size: 0.8rem;
+  font-size: $sm-text * 0.8;
 
-  @media (min-width: $tablet) and (max-width: $desktop) {
-    font-size: 1.6rem;
-  }
+  // @media (min-width: $tablet) and (max-width: $desktop) {
+  //   font-size: $l-text;
+  // }
 
   p {
-    margin-block-start: 1rem;
-    margin-block-end: 1rem;
+    margin-block-start: $sm-distance;
+    margin-block-end: $sm-distance;
     text-align: center;
 
-    @media (min-width: $tablet) and (max-width: $desktop) {
-      margin-block-start: 2rem;
-      margin-block-end: 2rem;
-    }
+    // @media (min-width: $tablet) and (max-width: $desktop) {
+    //   margin-block-start: $l-distance;
+    //   margin-block-end: $l-distance;
+    // }
   }
 
   img {
-    height: 1.2rem;
-    margin-block-end: 1rem;
+    height: $m-distance;
 
-    @media (min-width: $tablet) and (max-width: $desktop) {
-      height: 2.4rem;
-      margin-block-end: 2rem;
-    }
+    // @media (min-width: $tablet) and (max-width: $desktop) {
+    //   height: 2.4rem;
+    // }
   }
 }

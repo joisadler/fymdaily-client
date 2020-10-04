@@ -12,21 +12,26 @@
     position: sticky;
     bottom: 0;
     width: 100%;
-    height: calc((100% / 7) + 1px);
-    min-height: calc((100% / 7) + 1px);
-    padding-block-start: 0.5rem;
-    padding-block-end: 0.5rem;
+    height: calc((100% / 4) + 1px);
+    min-height: calc((100% / 4) + 1px);
+    padding-block-start: $sm-distance;
+    padding-block-end: $sm-distance;
     border-block-start: 1px solid black;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
     background-color: #fff;
-    font-size: 1rem;
-    line-height: 1.5rem;
+    font-size: $sm-text;
+    line-height: $sm-line-height;
+
+    @media (min-height: 481px) {
+      height: calc((100% / 6) + 1px);
+      min-height: calc((100% / 6) + 1px);
+    }
   }
 
   &-total-title {
-    font-size: 1.2rem;
+    font-size: $m-text;
     font-weight: 700;
   }
 }
