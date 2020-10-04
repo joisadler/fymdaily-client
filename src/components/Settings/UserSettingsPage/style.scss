@@ -1,5 +1,30 @@
 .user-settings {
   &-page-subtitle {
     font-size: $m-text;
+    margin-block-end: $m-distance;
+  }
+
+  &-form {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    flex: 1;
+  }
+
+  &-input-container {
+    width: 50%;
+    height: fit-content;
+  }
+
+  &-input-label {
+    display: inline-block;
+    font-size: $sm-text;
+    margin-block-end: $sm-distance;
+  }
+
+  &-input {
+    width: 100%;
+    height: $input-height;
+    font-size: $sm-text;
   }
 }
