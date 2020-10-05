@@ -8,7 +8,19 @@ const initialState = {
 export default function (state = initialState, action = {}) {
   switch (action.type) {
     case 'SET_USER':
-      return { ...state, loggedInUser: action.user };
+      if (!action.user) {
+        sessionStorage.setItem('user', null);
+        return state;
+      }
+      sessionStorage.setItem('user', JSON.stringify({
+        ...action.user,
+      }));
+      return {
+        ...state,
+        loggedInUser: {
+          ...action.user,
+        },
+      };
     default:
       return state;
   }

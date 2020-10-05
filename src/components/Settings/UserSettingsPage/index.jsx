@@ -1,24 +1,32 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable max-len */
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { useAsyncCallback } from 'react-async-hook';
+import { loadUser, updateUser } from '../../../actions/UserActions';
 import Navbar from '../../Navigation/Navbar';
 
 const UserSettingsPage = () => {
   const user = useSelector(state => state.user.loggedInUser);
-  console.log(user);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadUser(user._id));
+  }, [user._id, dispatch]);
+
   const {
+    _id,
     username,
   } = user;
-  const currentHeight = user.height;
-  const currentBodyWeight = user.bodyWeight;
-  const currentGender = user.gender;
-  const currentHipCircumference = user.hipCircumference;
-  const currrentWaistCircumference = user.waistCircumference;
-  const currentNeckCircumference = user.neckCircumference;
-  const currentPhysicalActivityLevel = user.physicalActivityLevel;
-  const currentGoal = user.goal;
-  const isUserInfoSet = !!user.height;
+  const currentHeight = user.height || '';
+  const currentBodyWeight = user.bodyWeight || '';
+  const currentGender = user.gender || 'male';
+  const currentHipCircumference = user.hipCircumference || '';
+  const currrentWaistCircumference = user.waistCircumference || '';
+  const currentNeckCircumference = user.neckCircumference || '';
+  const currentPhysicalActivityLevel = user.physicalActivityLevel || 'moderate';
+  const currentGoal = user.goal || 'normalWeightLoss';
+  const isUserInfoSet = user.height !== '';
   const [height, setHeight] = useState(currentHeight);
   const [bodyWeight, setBodyWeight] = useState(currentBodyWeight);
   const [gender, setGender] = useState(currentGender);
@@ -56,6 +64,29 @@ const UserSettingsPage = () => {
     set(name)(value);
   };
 
+  const history = useHistory();
+  const saveUserSettings = useAsyncCallback(async () => {
+    const updatedUser = {
+      _id,
+      username,
+      height,
+      bodyWeight,
+      gender,
+      hipCircumference,
+      waistCircumference,
+      neckCircumference,
+      physicalActivityLevel,
+      goal,
+    };
+    dispatch(updateUser(updatedUser));
+    history.push('/home');
+  });
+
+  const onSaveUserSettings = (e) => {
+    e.preventDefault();
+    saveUserSettings.execute();
+  };
+
   return (
     <>
       <main className="page">
@@ -69,7 +100,10 @@ const UserSettingsPage = () => {
               : 'Please enter the following data (this is necessary for the application to work correctly):'}
           </h2>
         </header>
-        <form className="user-settings-form">
+        <form
+          className="user-settings-form"
+          onSubmit={onSaveUserSettings}
+        >
           <div className="user-settings-input-container">
             <label
               htmlFor="user-settings-height-input"
