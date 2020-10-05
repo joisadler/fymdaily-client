@@ -14,6 +14,7 @@ const HomePage = () => {
 
   const user = useSelector(state => state.user.loggedInUser);
   const eatenFoods = useSelector(state => state.history.eatenFoods);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadEatenFoods(user._id));

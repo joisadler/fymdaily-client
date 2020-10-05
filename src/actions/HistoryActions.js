@@ -5,6 +5,8 @@ import {
   deleteEatenFood as deleteFood,
 } from '../services/history.service';
 
+import history from '../history';
+
 export function setEatenFoods(eatenFoods) {
   return {
     type: 'SET_EATEN_FOODS',
@@ -28,6 +30,7 @@ export function addEatenFood(newFood) {
     try {
       const updatedFoods = await addFood(newFood);
       dispatch(setEatenFoods(updatedFoods));
+      history.push('/home');
     } catch (err) {
       console.log('HistoryActions: err in addEatenFood', err);
     }

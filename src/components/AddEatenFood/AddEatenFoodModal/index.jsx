@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useAsyncCallback } from 'react-async-hook';
 import { useDispatch } from 'react-redux';
 import Modal from 'react-modal';
@@ -17,7 +16,6 @@ const AddEatenFoodModal = ({
   carbs,
 }) => {
   Modal.setAppElement('#root');
-  const history = useHistory();
   const [weight, setWeight] = useState(100);
 
   const decreaseWeight = () => {
@@ -54,7 +52,6 @@ const AddEatenFoodModal = ({
     e.preventDefault();
     addFood.execute();
     closeModal();
-    history.push('/home');
   };
 
   return (

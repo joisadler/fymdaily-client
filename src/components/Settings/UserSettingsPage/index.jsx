@@ -2,7 +2,6 @@
 /* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { useAsyncCallback } from 'react-async-hook';
 import { loadUser, updateUser } from '../../../actions/UserActions';
 import Navbar from '../../Navigation/Navbar';
@@ -64,7 +63,6 @@ const UserSettingsPage = () => {
     set(name)(value);
   };
 
-  const history = useHistory();
   const saveUserSettings = useAsyncCallback(async () => {
     const updatedUser = {
       _id,
@@ -79,7 +77,6 @@ const UserSettingsPage = () => {
       goal,
     };
     dispatch(updateUser(updatedUser));
-    history.push('/home');
   });
 
   const onSaveUserSettings = (e) => {

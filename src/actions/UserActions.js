@@ -32,6 +32,7 @@ export function updateUser(newData) {
       };
       const user = await userService.update(userData);
       dispatch(_setUser(user));
+      history.push('/home');
     } catch (err) {
       console.log('UserActions: err in updateUser', err);
     }
