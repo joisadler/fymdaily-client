@@ -1,7 +1,9 @@
 import React, { useRef, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { DebounceInput } from 'react-debounce-input';
 import useFoodSearch from '../../../hooks/useFoodSearch';
 import { getRandomStr } from '../../../services/util.servise';
+import Loader from '../../Loader';
 import Navbar from '../../Navigation/Navbar';
 import AddEatenFoodCard from '../AddEatenFoodCard';
 
@@ -11,6 +13,9 @@ const AddEatenFoodPage = () => {
     setInputText,
     foods,
   } = useFoodSearch();
+
+  const isLoading = useSelector(state => state.system.isLoading);
+  console.log(isLoading);
 
   const searchInput = useRef(null);
   useEffect(() => {
@@ -39,14 +44,16 @@ const AddEatenFoodPage = () => {
           />
         </header>
         <ul className="add-eaten-food-cards">
-          {foods
-            .sort((a, b) => a.name.localeCompare(b.name))
-            .map(food => (
-              <AddEatenFoodCard
-                key={food._id ? food._id : getRandomStr() + food.name}
-                food={food}
-              />
-            ))}
+          {isLoading
+            ? <Loader isLoading={isLoading} />
+            : foods
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map(food => (
+                <AddEatenFoodCard
+                  key={food._id ? food._id : getRandomStr() + food.name}
+                  food={food}
+                />
+              ))}
         </ul>
       </main>
       <Navbar />

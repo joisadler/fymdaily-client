@@ -6,6 +6,8 @@ import {
   deleteCustomFood as deleteFood,
 } from '../services/food.service';
 
+import { loading, doneLoading } from './SystemActions';
+
 function _setFoods(foods) {
   return {
     type: 'SET_FOODS',
@@ -37,12 +39,15 @@ export function updateFood(updatedFood) {
 export function loadFoods(text, pathname) {
   return async (dispatch) => {
     try {
+      dispatch(loading());
       const foods = pathname === '/custom-foods'
         ? await getCustomFoods(text)
         : await getFoods(text);
       dispatch(_setFoods(foods));
     } catch (err) {
       console.log('FoodActions: err in loadCustomFoods', err);
+    } finally {
+      dispatch(doneLoading());
     }
   };
 }
