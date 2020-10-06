@@ -15,7 +15,6 @@ const AddEatenFoodPage = () => {
   } = useFoodSearch();
 
   const isLoading = useSelector(state => state.system.isLoading);
-  console.log(isLoading);
 
   const searchInput = useRef(null);
   useEffect(() => {

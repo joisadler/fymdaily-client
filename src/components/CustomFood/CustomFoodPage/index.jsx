@@ -1,6 +1,8 @@
 import React, { useRef, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { DebounceInput } from 'react-debounce-input';
 import useFoodSearch from '../../../hooks/useFoodSearch';
+import Loader from '../../Loader';
 import Navbar from '../../Navigation/Navbar';
 import CustomFoodCard from '../CustomFoodCard';
 
@@ -10,6 +12,8 @@ const CustomFoodPage = () => {
     setInputText,
     foods,
   } = useFoodSearch();
+
+  const isLoading = useSelector(state => state.system.isLoading);
 
   const searchInput = useRef(null);
   useEffect(() => {
@@ -38,11 +42,12 @@ const CustomFoodPage = () => {
           />
         </header>
         <ul className="custom-foods-cards">
-          {foods
-            .sort((a, b) => a.name.localeCompare(b.name))
-            .map(food => (
-              <CustomFoodCard key={food._id} food={food} />
-            ))}
+          {isLoading ? <Loader isLoading={isLoading} />
+            : foods
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map(food => (
+                <CustomFoodCard key={food._id} food={food} />
+              ))}
         </ul>
       </main>
       <Navbar />
