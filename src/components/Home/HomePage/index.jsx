@@ -27,7 +27,7 @@ const HomePage = () => {
   return (
     <>
       <main className="page">
-        {isLoading ? <Loader isLoading={isLoading} />
+        {isLoading ? <Loader />
           : (
             <>
               <CaloriesChart

@@ -1,20 +1,19 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import BeatLoader from 'react-spinners/BeatLoader';
-import PropTypes from 'prop-types';
 
-const Loader = ({ isLoading }) => (
-  <div className="loader-container">
-    <BeatLoader
-      size={15}
-      margin={2}
-      color="green"
-      loading={isLoading}
-    />
-  </div>
-);
-
-Loader.propTypes = {
-  isLoading: PropTypes.bool.isRequired,
+const Loader = () => {
+  const isLoading = useSelector(state => state.system.isLoading);
+  return (
+    <div className="loader-container">
+      <BeatLoader
+        size={15}
+        margin={2}
+        color="green"
+        loading={isLoading}
+      />
+    </div>
+  );
 };
 
 export default Loader;

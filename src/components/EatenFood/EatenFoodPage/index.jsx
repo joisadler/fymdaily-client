@@ -61,7 +61,7 @@ const EatenFoodPage = () => {
       <main className="page">
         <h1 className="page-title">Eaten foods</h1>
         <ul className="eaten-food-cards">
-          {isLoading ? <Loader isLoading={isLoading} />
+          {isLoading ? <Loader />
             : (
               <>
                 {eatenFoods && eatenFoods.map(food => (

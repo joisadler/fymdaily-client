@@ -44,7 +44,7 @@ const AddEatenFoodPage = () => {
         </header>
         <ul className="add-eaten-food-cards">
           {isLoading
-            ? <Loader isLoading={isLoading} />
+            ? <Loader />
             : foods
               .sort((a, b) => a.name.localeCompare(b.name))
               .map(food => (

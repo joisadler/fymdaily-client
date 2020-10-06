@@ -42,7 +42,7 @@ const CustomFoodPage = () => {
           />
         </header>
         <ul className="custom-foods-cards">
-          {isLoading ? <Loader isLoading={isLoading} />
+          {isLoading ? <Loader />
             : foods
               .sort((a, b) => a.name.localeCompare(b.name))
               .map(food => (
