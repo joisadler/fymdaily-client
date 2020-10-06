@@ -1,12 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import BeatLoader from 'react-spinners/BeatLoader';
+import PulseLoader from 'react-spinners/PulseLoader';
 
 const Loader = () => {
   const isLoading = useSelector(state => state.system.isLoading);
   return (
     <div className="loader-container">
-      <BeatLoader
+      <PulseLoader
         size={15}
         margin={2}
         color="green"
