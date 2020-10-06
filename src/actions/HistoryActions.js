@@ -5,6 +5,8 @@ import {
   deleteEatenFood as deleteFood,
 } from '../services/history.service';
 
+import { loading, doneLoading } from './SystemActions';
+
 import history from '../history';
 
 export function setEatenFoods(eatenFoods) {
@@ -17,10 +19,13 @@ export function setEatenFoods(eatenFoods) {
 export function loadEatenFoods(userId) {
   return async (dispatch) => {
     try {
+      dispatch(loading());
       const eatenFoods = await getEatenFoods(userId);
       dispatch(setEatenFoods(eatenFoods));
     } catch (err) {
       console.log('HistoryActions: err in loadEatenFoods', err);
+    } finally {
+      dispatch(doneLoading());
     }
   };
 }

@@ -4,10 +4,13 @@ import { getRandomStr } from '../../../services/util.servise';
 import { loadEatenFoods } from '../../../actions/HistoryActions';
 import Navbar from '../../Navigation/Navbar';
 import EatenFoodCard from '../EatenFoodCard';
+import Loader from '../../Loader';
 
 const EatenFoodPage = () => {
   const user = useSelector(state => state.user.loggedInUser);
   const eatenFoods = useSelector(state => state.history.eatenFoods);
+  const isLoading = useSelector(state => state.system.isLoading);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadEatenFoods(user._id));
@@ -19,12 +22,14 @@ const EatenFoodPage = () => {
     totalFats: 0,
     totalCarbs: 0,
   });
+
   const {
     totalCalories,
     totalProteins,
     totalFats,
     totalCarbs,
   } = totalData;
+
   useEffect(() => {
     if (!eatenFoods) return;
     const data = eatenFoods.reduce((acc, food) => {
@@ -56,17 +61,22 @@ const EatenFoodPage = () => {
       <main className="page">
         <h1 className="page-title">Eaten foods</h1>
         <ul className="eaten-food-cards">
-          {eatenFoods && eatenFoods.map(food => (
-            <EatenFoodCard key={getRandomStr() + food.name} food={food} />
-          ))}
-          <li className="eaten-food-total">
-            <h2 className="eaten-food-total-title">Total:</h2>
-            <p>
-              {`Calories: ${totalCalories}`}
-              <br />
-              {`Proteins: ${totalProteins} | Fats: ${totalFats} | Carbs: ${totalCarbs}`}
-            </p>
-          </li>
+          {isLoading ? <Loader isLoading={isLoading} />
+            : (
+              <>
+                {eatenFoods && eatenFoods.map(food => (
+                  <EatenFoodCard key={getRandomStr() + food.name} food={food} />
+                ))}
+                <li className="eaten-food-total">
+                  <h2 className="eaten-food-total-title">Total:</h2>
+                  <p>
+                    {`Calories: ${totalCalories}`}
+                    <br />
+                    {`Proteins: ${totalProteins} | Fats: ${totalFats} | Carbs: ${totalCarbs}`}
+                  </p>
+                </li>
+              </>
+            )}
         </ul>
       </main>
       <Navbar />
